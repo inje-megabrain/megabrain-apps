@@ -13,11 +13,6 @@
       "apps/*"
     ]
   },
-  "lint-staged": {
-    "**/*.{ts,tsx}": [
-      "eslint --fix"
-    ]
-  },
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/inje-megabrain/megabrain-apps.git",

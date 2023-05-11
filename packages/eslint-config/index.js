@@ -10,7 +10,8 @@ module.exports = {
     'prettier',
   ],
   parser: '@typescript-eslint/parser',
-  plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
+  plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier', 'unused-imports'],
+  ignorePatterns: ['**/.storybook/*.{ts,tsx}'],
   rules: {
     'no-empty-pattern': 'off',
     '@next/next/no-img-element': 'off',
@@ -28,6 +29,24 @@ module.exports = {
         usePrettierrc: true,
       },
     ],
+    'react/no-unknown-property': [
+      'error',
+      {
+        ignore: ['jsx'],
+      },
+    ],
+    'no-unused-vars': 'off',
+    'unused-imports/no-unused-imports': 'error',
+    'unused-imports/no-unused-vars': [
+      'warn',
+      {
+        vars: 'all',
+        varsIgnorePattern: '^_',
+        args: 'after-used',
+        argsIgnorePattern: '^_',
+      },
+    ],
+    'react/no-unescaped-entities': 0,
   },
   settings: {
     react: {
