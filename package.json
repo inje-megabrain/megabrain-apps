@@ -2,18 +2,29 @@
   "name": "megabrain-apps",
   "packageManager": "yarn@3.5.1",
   "private": true,
+  "scripts": {
+    "lint-all": "eslint . --ignore-path .gitignore --ext .ts,.tsx,.js",
+    "lint-all:fix": "yarn lint --fix",
+    "prepare": "husky install"
+  },
   "workspaces": {
     "packages": [
       "packages/*",
       "apps/*"
     ]
   },
+  "lint-staged": {
+    "**/*.{ts,tsx}": [
+      "eslint --fix"
+    ]
+  },
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/inje-megabrain/megabrain-apps.git",
-  "author": "byungjin <byungjin.dev@gmail.com>",
+  "author": "Megabrain",
   "license": "MIT",
   "devDependencies": {
+    "@megabrain/eslint-config": "workspace:^",
     "@types/eslint": "^8.37.0",
     "@types/node": "^20.1.2",
     "@types/prettier": "^2",
@@ -22,6 +33,8 @@
     "eslint": "^8.40.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
     "typescript": "^5.0.4"
   }

@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "Lint: 수정된 파일에 규칙 적용"
+
+yarn lint-staged
+
+echo "Lint: 규칙 적용 완료"
