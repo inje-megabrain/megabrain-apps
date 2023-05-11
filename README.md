@@ -6,8 +6,6 @@
 
 ## 구성
 
----
-
 ### 전역 의존성
 
 - ESLint
@@ -30,7 +28,16 @@ Shared (각각의 App에서 공통적으로 사용되는 Resource)
 
 ## 개발 환경 구성
 
----
+### Git
+
+버전 관리로 git을 사용하며, 원격 저장소로는 github를 이용하고 있습니다. (git이 없는 경우, 설치해주세요.)
+
+다음 명령어를 통해 프로젝트를 내려받을 수 있습니다.
+
+```sh
+# 원하는 경로에서 cmd 또는 terminal을 연 다음
+git clone https://github.com/inje-megabrain/megabrain-apps.git
+```
 
 ### Node (LTS 18.x.x)
 
