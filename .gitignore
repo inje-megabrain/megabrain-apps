@@ -9,7 +9,7 @@
 
 .DS_Store
 .env*
-
+apps/admin
 
 node_modules
 dist
