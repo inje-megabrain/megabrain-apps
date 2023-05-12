@@ -5,7 +5,9 @@
   "scripts": {
     "lint-all": "eslint . --ignore-path .gitignore --ext .ts,.tsx,.js",
     "lint-all:fix": "yarn lint --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "dev:club": "yarn workspace @megabrain/club dev",
+    "storybook": "yarn workspace @megabrain/ui storybook"
   },
   "workspaces": {
     "packages": [
