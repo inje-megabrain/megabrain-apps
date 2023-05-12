@@ -10,15 +10,24 @@ export const { styled, css, getCssText, createTheme, globalCss, config } = creat
     fonts: {
       body: "'IBM Plex Sans KR', sans-serif",
     },
+    fontSizes: {
+      button: '14px',
+    },
     colors: {
       // text
       primary: '#18223c',
+      'on-primary': '#ffffff',
       secondary: '#3C486B',
+      'on-secondary': '#ffffff',
       tertiary: '#9b9b9b',
+      'on-tertiary': '#ffffff',
       'accent-y': '#F9D949',
+      'on-accent-y': '#ffffff',
       'accent-r': '#F45050',
+      'on-accent-r': '#ffffff',
       // background
       background: '#F0F0F0',
+      disabled: '#cacfcf',
     },
   },
 });
@@ -43,3 +52,10 @@ export const darkTheme = createTheme('dark', {
 });
 
 export type CSS = StitchesCSS<typeof config>;
+
+// Hex To RGB
+export const h2r = (hex: string) =>
+  hex
+    .match(/[A-Za-z0-9]{2}/g)!
+    .map((v) => parseInt(v, 16))
+    .join(' ');
