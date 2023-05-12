@@ -37,7 +37,11 @@ Shared (각각의 App에서 공통적으로 사용되는 Resource)
 ```sh
 # 원하는 경로에서 cmd 또는 terminal을 연 다음
 git clone https://github.com/inje-megabrain/megabrain-apps.git
+# 또는 Submodule(Admin) 등이 포함된 프로젝트를 가져오려면 다음 명령어를 입력하세요
+git clone --recurse-submodules https://github.com/inje-megabrain/megabrain-apps.git
 ```
+
+> Submodule 프로젝트를 수정하는 경우 'Submodule 설정'을 참고해주세요
 
 ### Node (LTS 18.x.x)
 
@@ -109,4 +113,27 @@ yarn workspace @megabrain/ui storybook
 
 ```sh
 yarn workspace @megabrain/ui build-storybook
+```
+
+## Submodule 설정
+
+해당 설정은 Apps에 포함된 Submodule 프로젝트를 수정하는 경우 필요합니다. (다른 경우에는 설정 필요 없음)
+
+[다음 글](https://git-scm.com/book/ko/v2/Git-%EB%8F%84%EA%B5%AC-%EC%84%9C%EB%B8%8C%EB%AA%A8%EB%93%88)을 참조하여 작성되었습니다.
+
+### Root 에서 Submodule Project 수정사항 동시 적용하기
+
+```sh
+git config --global diff.submodule log
+```
+
+### Submodule 업데이트 사항 받아오기
+
+```sh
+# 아래 작성된 모든 명령어는 전체 root 에서 실행하면 됩니다.
+# 전체 submodule 업데이트
+git submodule update --remote
+# 특정 프로젝트
+# 예시 git submodule update --remote apps/admin
+git submodule update --remote ['.gitmodules에 등록된 태그 명']
 ```
