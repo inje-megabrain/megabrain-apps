@@ -5,16 +5,37 @@ on:
       - Club-v*.*.*
 
 jobs:
-  build:
+  build-and-push-image:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       # import env
       - name: Create .env file
         run: |
           touch .env
           echo "${{ secrets.ENV_CLUB }}" >> .env
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and Push
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: byungjinlee/byungjin-pri:latest
+          file: dockerFiles/club.Dockerfile
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+        #run: docker build -f dockerFiles/club.Dockerfile -t megabrain/club-app .
 #       # 도커 이미지 버전 가져오기
 #       - name: Get the version
 #         id: get_version
