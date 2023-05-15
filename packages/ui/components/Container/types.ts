@@ -1,4 +1,4 @@
-import { CSS } from '@/styles';
+import { CSS } from '@megabrain/ui/styles';
 import { MouseEventHandler, ReactNode } from 'react';
 import { BaseHTMLAttributes } from 'react';
 

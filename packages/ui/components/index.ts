@@ -1,5 +1,3 @@
-export * from './HelloWorld';
-export * from './WelcomeBlock';
 export * from './Button';
 export * from './Container';
 export * from './Image';

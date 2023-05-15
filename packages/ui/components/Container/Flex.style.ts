@@ -1,5 +1,5 @@
 import { BaseContainer } from './Container.style';
-import { styled } from '@/styles';
+import { styled } from '@megabrain/ui/styles';
 
 export const BaseFlex = styled(BaseContainer, {
   display: 'flex',

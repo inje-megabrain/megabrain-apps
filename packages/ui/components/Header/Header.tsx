@@ -1,4 +1,4 @@
-import BaseHeader from '@/components/Header/Header.style';
+import BaseHeader from './Header.style';
 
 export const Header: React.FC = () => {
   return (

@@ -1,4 +1,4 @@
-import { styled } from '@/styles';
+import { styled } from '@megabrain/ui/styles';
 import { css } from '@stitches/react';
 
 const baseCenter = css({

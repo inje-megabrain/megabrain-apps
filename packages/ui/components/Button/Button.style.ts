@@ -1,4 +1,4 @@
-import { styled } from '@/styles';
+import { styled } from '@megabrain/ui/styles';
 
 export const BaseButton = styled('button', {
   $$color: '$colors$primary',
