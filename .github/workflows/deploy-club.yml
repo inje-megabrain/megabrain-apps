@@ -35,3 +35,4 @@ jobs:
           tags: byungjinlee/byungjin-pri:latest
           file: dockerFiles/club.Dockerfile
           cache-from: type=gha
+          cache-to: type=gha,mode=max
