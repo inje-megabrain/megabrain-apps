@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@stitches/react": "^1.2.8",
-    "next": "^13.4.1",
+    "next": "13.4.1",
     "react-feather": "^2.0.10"
   },
   "scripts": {
