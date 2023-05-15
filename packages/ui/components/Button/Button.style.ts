@@ -20,6 +20,10 @@ export const BaseButton = styled('button', {
   transition:
     'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
 
+  '&:hover': {
+    $$backgroundColor: '$colors$on-secondary',
+  },
+
   svg: {
     display: 'inline-block',
     height: '100%',
@@ -27,6 +31,11 @@ export const BaseButton = styled('button', {
   },
 
   variants: {
+    rounded: {
+      true: {
+        borderRadius: 9999,
+      },
+    },
     color: {
       primary: {
         $$color: '$colors$primary',

@@ -17,4 +17,5 @@ export interface ButtonProps {
   iconOnly?: boolean;
   children?: ReactNode;
   type?: ButtonType;
+  rounded?: boolean;
 }
