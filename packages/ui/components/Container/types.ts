@@ -12,17 +12,19 @@ type ContainerOverflow =
   | 'scroll-x-always'
   | 'always';
 
-type ContainerCenter = 'full' | 'vertical' | 'horizontal';
+type Direction = 'all' | 'horizontal' | 'vertical';
 
 export interface ContainerProps {
   display?: ContainerDisplay;
   pad?: boolean;
   m?: boolean;
   overflow?: ContainerOverflow;
-  center?: ContainerCenter;
   css?: BaseHTMLAttributes<HTMLDivElement> & CSS;
   onClick?: MouseEventHandler<HTMLDivElement>;
   children?: ReactNode;
+  full?: Direction;
+  layoutCenter?: Direction;
+  gravity?: Direction;
 }
 
 type FlexJustify = 'end' | 'start' | 'between' | 'evenly' | 'around' | 'center' | 'left' | 'right';

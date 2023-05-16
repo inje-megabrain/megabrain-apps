@@ -1,7 +1,7 @@
 import { styled } from '@megabrain/ui/styles';
-import { css } from '@stitches/react';
+// import { css } from '@stitches/react';
 
-const baseCenter = css({
+const baseLayoutCenter = {
   width: 1200,
   '@tablet': {
     width: 975,
@@ -9,7 +9,7 @@ const baseCenter = css({
   '@mobile': {
     width: 580,
   },
-});
+};
 
 export const BaseContainer = styled('div', {
   display: 'block',
@@ -44,6 +44,19 @@ export const BaseContainer = styled('div', {
     },
     //#endregion
 
+    full: {
+      horizontal: {
+        width: '100%',
+      },
+      vertical: {
+        height: '100%',
+      },
+      all: {
+        height: '100%',
+        width: '100%',
+      },
+    },
+
     //#region  Scroll
     overflow: {
       hidden: {
@@ -72,16 +85,32 @@ export const BaseContainer = styled('div', {
     //#endregion
 
     //#region Center
-    center: {
-      full: {
-        ...baseCenter,
+    gravity: {
+      all: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
       },
       vertical: {
-        ...baseCenter,
+        display: 'flex',
+        alignItems: 'center',
+      },
+      horizontal: {
+        display: 'flex',
+        justifyContent: 'center',
+      },
+    },
+    layoutCenter: {
+      all: {
+        ...baseLayoutCenter,
+        margin: 'auto',
+      },
+      vertical: {
+        ...baseLayoutCenter,
         margin: 'auto 0px',
       },
       horizontal: {
-        ...baseCenter,
+        ...baseLayoutCenter,
         margin: '0px auto',
       },
     },
