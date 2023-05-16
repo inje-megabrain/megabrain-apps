@@ -1,15 +1,4 @@
 import { styled } from '@megabrain/ui/styles';
-// import { css } from '@stitches/react';
-
-const baseLayoutCenter = {
-  width: 1200,
-  '@tablet': {
-    width: 975,
-  },
-  '@mobile': {
-    width: 580,
-  },
-};
 
 export const BaseContainer = styled('div', {
   display: 'block',
@@ -90,10 +79,12 @@ export const BaseContainer = styled('div', {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
+        height: '100%',
       },
       vertical: {
         display: 'flex',
         alignItems: 'center',
+        height: '100%',
       },
       horizontal: {
         display: 'flex',
@@ -101,17 +92,15 @@ export const BaseContainer = styled('div', {
       },
     },
     layoutCenter: {
-      all: {
-        ...baseLayoutCenter,
-        margin: 'auto',
-      },
-      vertical: {
-        ...baseLayoutCenter,
-        margin: 'auto 0px',
-      },
-      horizontal: {
-        ...baseLayoutCenter,
+      true: {
+        width: 975,
         margin: '0px auto',
+        '@tablet': {
+          width: 750,
+        },
+        '@mobile': {
+          width: 580,
+        },
       },
     },
     //#endregion

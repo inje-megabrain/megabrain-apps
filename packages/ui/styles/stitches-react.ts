@@ -1,6 +1,7 @@
 import { createStitches, CSS as StitchesCSS } from '@stitches/react';
 
-export const MODAL_ROOT_ID = 'modal-root';
+const MODAL_ROOT_SELECTOR = `#modal-root`;
+export const MODAL_ROOT_ID = MODAL_ROOT_SELECTOR.slice(1);
 
 //#region Stitches Base Style Configuration
 export const { styled, css, getCssText, createTheme, globalCss, config, keyframes } =
@@ -28,6 +29,8 @@ export const { styled, css, getCssText, createTheme, globalCss, config, keyframe
         'on-accent-y': '#ffffff',
         'accent-r': '#F45050',
         'on-accent-r': '#ffffff',
+        'modal-background': 'rgba(0, 0, 0, 0.5)',
+
         // background
         background: '#F0F0F0',
         disabled: '#cacfcf',
@@ -41,6 +44,12 @@ export const globalStyles = globalCss({
     // About Fonts
     "url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@200;400;600&display=swap')",
   ],
+  // Modal Configuration
+  [MODAL_ROOT_SELECTOR]: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+  },
 });
 
 export const darkTheme = createTheme('dark', {
@@ -51,6 +60,7 @@ export const darkTheme = createTheme('dark', {
     'accent-y': '#F9D949',
     'accent-r': '#F45050',
     background: '#18223c',
+    'modal-background': 'rgba(0, 0, 0, 0.5)',
   },
 });
 

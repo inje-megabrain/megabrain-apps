@@ -23,7 +23,7 @@ export interface ContainerProps {
   onClick?: MouseEventHandler<HTMLDivElement>;
   children?: ReactNode;
   full?: Direction;
-  layoutCenter?: Direction;
+  layoutCenter?: boolean;
   gravity?: Direction;
 }
 

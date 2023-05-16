@@ -25,6 +25,7 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/jsx-first-prop-new-line': [2, 'multiline'],
     'react/jsx-max-props-per-line': [2, { maximum: 1, when: 'multiline' }],
+    'react/prop-types': 'off',
     'prettier/prettier': [
       'error',
       {
