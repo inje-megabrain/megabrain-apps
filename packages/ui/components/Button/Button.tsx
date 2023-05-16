@@ -20,6 +20,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     return (
       <BaseButton
+        role="button"
         ref={ref}
         type={type}
         color={color}
