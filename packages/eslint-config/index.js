@@ -23,10 +23,13 @@ module.exports = {
     '@typescript-eslint/no-unnecessary-type-constraint': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
+    'react/jsx-first-prop-new-line': [2, 'multiline'],
+    'react/jsx-max-props-per-line': [2, { maximum: 1, when: 'multiline' }],
     'prettier/prettier': [
       'error',
       {
         usePrettierrc: true,
+        endOfLine: 'auto',
       },
     ],
     'react/no-unknown-property': [
