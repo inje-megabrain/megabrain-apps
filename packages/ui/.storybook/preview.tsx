@@ -1,4 +1,6 @@
+import React from 'react';
 import type { Preview } from '@storybook/react';
+import { globalStyles } from '@megabrain/ui/styles';
 
 const preview: Preview = {
   parameters: {
@@ -10,6 +12,13 @@ const preview: Preview = {
       },
     },
   },
+  decorators: [
+    (Story) => {
+      globalStyles();
+
+      return <Story />;
+    },
+  ],
 };
 
 export default preview;

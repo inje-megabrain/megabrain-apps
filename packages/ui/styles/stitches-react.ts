@@ -1,5 +1,7 @@
 import { createStitches, CSS as StitchesCSS } from '@stitches/react';
 
+export const MODAL_ROOT_ID = 'modal-root';
+
 //#region Stitches Base Style Configuration
 export const { styled, css, getCssText, createTheme, globalCss, config, keyframes } =
   createStitches({
