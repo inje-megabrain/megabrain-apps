@@ -5,7 +5,21 @@ import type { TextProps } from './types';
 import { MegabrainUIErrorTag, MegabrainUIError } from '@megabrain/ui/types';
 
 export const Text = forwardRef<HTMLElement, TextProps>(
-  ({ css, tag = 'span', children, onClick, ...props }, ref) => {
+  (
+    {
+      css,
+      tag = 'span',
+      type = 'inherit',
+      display = 'inline',
+      weight = 'normal',
+      align = 'left',
+      ellipsis = false,
+      children,
+      onClick,
+      ...props
+    },
+    ref
+  ) => {
     const BaseComponent = baseTextComponent[tag];
 
     // Assert When Children is null or not string;
@@ -18,6 +32,11 @@ export const Text = forwardRef<HTMLElement, TextProps>(
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={ref as any}
         css={css}
+        type={type}
+        display={display}
+        align={align}
+        ellipsis={ellipsis}
+        weight={weight}
         onClick={onClick}
         {...props}
       >
