@@ -1,9 +1,9 @@
-import { sayHello } from '@megabrain/core';
-//import { styled } from '@megabrain/ui/libs'; // UI Libs
+import { backend } from '@megabrain/core';
+import { Button } from '@megabrain/ui'; // UI Libs
 //import { Clock } from '@megabrain/ui/icons'; // Icon
 
 export default function Home() {
-  sayHello();
-
-  return <>Hello</>;
+  return (
+    <Button onClick={() => backend.systems.ping('hello').then(console.log)}>API 보내보기</Button>
+  );
 }
