@@ -22,6 +22,8 @@
   "license": "MIT",
   "devDependencies": {
     "@megabrain/eslint-config": "workspace:^",
+    "@storybook/builder-webpack5": "^7.0.12",
+    "@svgr/webpack": "^8.0.1",
     "@types/eslint": "^8.37.0",
     "@types/node": "^20.1.2",
     "@types/prettier": "^2",
@@ -34,5 +36,8 @@
     "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
     "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "react-svg": "^16.1.12"
   }
 }
