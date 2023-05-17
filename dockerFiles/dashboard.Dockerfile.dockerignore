@@ -1,0 +1,10 @@
+**/.github
+**/.husky
+**/.idea
+**/.vscode
+**/.gitignore
+**/README.md
+**/node_modules
+**/.next
+apps
+!apps/dashboard

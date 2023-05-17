@@ -7,8 +7,10 @@
     "lint-all:fix": "yarn lint-all --fix",
     "prepare": "husky install",
     "dev:club": "yarn workspace @megabrain/club dev",
+    "dev:dashboard": "yarn workspace @megabrain/dashboard dev",
     "storybook": "yarn workspace @megabrain/ui storybook",
-    "build:club": "yarn workspace @megabrain/club build"
+    "build:club": "yarn workspace @megabrain/club build",
+    "build:dashboard": "yarn workspace @megabrain/dashboard build"
   },
   "workspaces": {
     "packages": [
