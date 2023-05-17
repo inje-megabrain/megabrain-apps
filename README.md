@@ -1,6 +1,6 @@
 # megabrain-apps
 
-메가 브레인 Fronted 서비스를 모아두는 monorepo 입니다.
+메가브레인 Apps v3.0의 Frontend 서비스를 모아두는 monorepo 입니다.
 
 > git flow 전략을 일부 차용합니다.
 
