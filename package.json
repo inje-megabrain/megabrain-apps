@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "lint-all": "eslint . --ignore-path .gitignore --ext .ts,.tsx,.js",
-    "lint-all:fix": "yarn lint --fix",
+    "lint-all:fix": "yarn lint-all --fix",
     "prepare": "husky install",
     "dev:club": "yarn workspace @megabrain/club dev",
     "storybook": "yarn workspace @megabrain/ui storybook",
@@ -23,8 +23,10 @@
   "license": "MIT",
   "devDependencies": {
     "@esbuild/linux-arm64": "0.17.18",
+    "@esbuild/linux-x64": "0.17.18",
     "@megabrain/eslint-config": "workspace:^",
     "@next/swc-linux-arm64-musl": "13.4.1",
+    "@next/swc-linux-x64-musl": "13.4.1",
     "@types/eslint": "^8.37.0",
     "@types/node": "^20.1.2",
     "@types/prettier": "^2",
