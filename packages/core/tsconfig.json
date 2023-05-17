@@ -11,6 +11,6 @@
       "DOM"
     ],
     "module": "ESNext",
-    "target": "es6"
+    "target": "es6",
   }
 }

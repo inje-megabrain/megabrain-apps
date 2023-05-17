@@ -12,5 +12,7 @@ export default meta;
 type Story = StoryObj<typeof Text>;
 
 export const Primary: Story = {
-  render: () => <Text />,
+  args: {
+    children: '하나 이상의 문자만 입력해주세요',
+  },
 };

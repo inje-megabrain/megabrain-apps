@@ -1,1 +1,1 @@
-export * from './dumb';
+export * from './dumo';

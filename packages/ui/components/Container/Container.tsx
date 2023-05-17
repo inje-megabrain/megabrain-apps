@@ -1,5 +1,28 @@
-export const Container: React.FC = () => {
-  return <div>Container</div>;
-};
+import { forwardRef } from 'react';
+import { BaseContainer } from './Container.style';
+import { ContainerProps } from './types';
 
-export default Container;
+export const Container = forwardRef<HTMLDivElement, ContainerProps>(
+  ({ display, pad, m, overflow, layoutCenter, gravity, css, children, full, onClick }, ref) => {
+    return (
+      <BaseContainer
+        ref={ref}
+        m={m}
+        display={display}
+        pad={pad}
+        onClick={onClick}
+        css={css}
+        overflow={overflow}
+        full={full}
+        layoutCenter={layoutCenter}
+        gravity={gravity}
+      >
+        {children}
+      </BaseContainer>
+    );
+  }
+);
+
+Container.displayName = 'Container';
+
+export default BaseContainer;

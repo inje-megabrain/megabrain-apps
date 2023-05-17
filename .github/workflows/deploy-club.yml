@@ -1,42 +1,38 @@
 name: Build & Docker (Club)
 on:
   push:
-    tags:
-      - Club-v*.*.*
+    branches:
+      - deploy/club
 
 jobs:
-  build:
+  build-and-push-image:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
       # import env
       - name: Create .env file
         run: |
           touch .env
           echo "${{ secrets.ENV_CLUB }}" >> .env
-#       # 도커 이미지 버전 가져오기
-#       - name: Get the version
-#         id: get_version
-#         run: |
-#           RELEASE_VERSION_WITHOUT_V="$(cut -d'v' -f2 <<< ${GITHUB_REF#refs/*/})"
-#           echo ::set-output name=VERSION::$RELEASE_VERSION_WITHOUT_V
 
-#       # 도커 빌드 관련 셋업
-#       - name: Set up Docker Buildx
-#         uses: docker/setup-buildx-action@v1
-#       # 내 도커허브 로그인
-#       - name: Login to DockerHub
-#         uses: docker/login-action@v1
-#         with:
-#           username: ${{ secrets.DOCKERHUB_USERNAME }}
-#           password: ${{ secrets.DOCKERHUB_TOKEN }}
-#       # 도커이미지 빌드하고 허브로 푸쉬
-#       - name: Build and push
-#         uses: docker/build-push-action@v2
-#         with:
-#           context: .
-#           file: ./Dockerfile.ticket
-#           platforms: linux/amd64
-#           push: true
-#           tags: mega/dudoong-ticket:${{ steps.get_version.outputs.VERSION }}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and Push
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          tags: byungjinlee/megabrain-club-app:latest
+          file: dockerFiles/club.Dockerfile
+          cache-from: type=gha
+          cache-to: type=gha,mode=max

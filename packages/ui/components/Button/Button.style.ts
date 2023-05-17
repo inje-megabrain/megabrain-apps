@@ -1,4 +1,4 @@
-import { styled } from '@/styles';
+import { styled } from '@megabrain/ui/styles';
 
 export const BaseButton = styled('button', {
   $$color: '$colors$primary',
@@ -19,10 +19,6 @@ export const BaseButton = styled('button', {
   padding: '6px 16px',
   transition:
     'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
-
-  '&:hover': {
-    $$backgroundColor: '$colors$on-secondary',
-  },
 
   svg: {
     display: 'inline-block',
