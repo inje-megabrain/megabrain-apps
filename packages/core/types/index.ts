@@ -1,1 +1,1 @@
-export * from './dumo';
+export * from './global';

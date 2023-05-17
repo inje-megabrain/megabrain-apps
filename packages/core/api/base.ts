@@ -1,5 +1,27 @@
 // ! MOCK
-const MOCKING_MODE = true;
+
+const IS_PRODUCTION = process.env.NODE_ENV === 'production';
+
+const __MOCK_MODE_LOCAL_KEY = 'mock-mode';
+
+if (typeof window !== 'undefined' && !IS_PRODUCTION) {
+  window.MEGA_API_SET_MOCK = (value: boolean) => {
+    localStorage.setItem(__MOCK_MODE_LOCAL_KEY, `${value}`);
+    console.log('API MOCKING이 재설정되었습니다. 새로고침을 통해 변경사항을 적용해주세요.');
+  };
+}
+
+// 로컬 스토리지에서 값을 가져옵니다. 없는 경우에는 false를 기본값으로 설정합니다.
+const __MOCK_MODE_LOCAL =
+  typeof window !== 'undefined' && !IS_PRODUCTION
+    ? localStorage.getItem(__MOCK_MODE_LOCAL_KEY)
+    : false;
+
+const MOCKING_MODE = __MOCK_MODE_LOCAL === 'true'; // Local Storage's value was stored 'string'
+
+// 로컬스토리지에 값이 없는 경우에는 기본값으로 로컬스토리지를 초기화합니다.
+if (__MOCK_MODE_LOCAL === null && !IS_PRODUCTION)
+  localStorage.setItem(__MOCK_MODE_LOCAL_KEY, 'false');
 
 //#region
 
@@ -38,7 +60,7 @@ export const fetcher = fetcherMethods.reduce((_fetcher, item) => {
       });
       return await unwrapResponse(response);
     } catch (err) {
-      fetchErrorHandler(MegabrainAPIError.of(err, item, args));
+      fetchErrorHandler(MegabrainAPIError.of(item, 'Fail to Fetch', args));
     }
   };
   return _fetcher;
@@ -64,8 +86,8 @@ const mockFetcher = <TMock = unknown>(mock?: TMock) => {
     return mock;
   } else {
     throw MegabrainAPIError.of(
-      'MOCK 함수가 비어있는 경우 [MOCK-MODE]를 사용할 수 없습니다.',
-      'MOCK'
+      'MOCK',
+      'option.mock 함수가 비어있는 경우 [MOCK-MODE]를 사용할 수 없습니다.'
     );
   }
 };
@@ -76,6 +98,7 @@ export const createEndpoint = <TResult = unknown, TPayload = string>(
   option?: EndpointOption<TPayload, TResult>
 ): Endpoint<TPayload, TResult> => {
   // endpoint url를 자동으로 계산하여 payload만 인자로 받는 fetcher 함수를 생성합니다.
+
   const fetcherWithComputedEndpoint = MOCKING_MODE
     ? // Mock Mode 인 경우 등록된 함수로 Mocking 합니다
       (p: TPayload) => mockFetcher(option?.mock)(p)
@@ -95,23 +118,35 @@ export const createEndpoint = <TResult = unknown, TPayload = string>(
 //#region MegabrainAPIError
 
 export class MegabrainAPIError extends Error {
-  error: unknown;
+  description: string;
   method: FetchMethod;
   args?: Parameters<typeof fetch>;
 
   constructor(
-    error: MegabrainAPIError['error'],
     method: MegabrainAPIError['method'],
+    description: MegabrainAPIError['description'],
     args?: MegabrainAPIError['args']
   ) {
-    super('API ERROR');
-    this.error = error;
+    super();
+    this.description = description;
     this.method = method;
     this.args = args;
   }
 
-  static of(...args: ConstructorParameters<typeof MegabrainAPIError>) {
+  public static of(...args: ConstructorParameters<typeof MegabrainAPIError>) {
     return new this(...args);
+  }
+
+  get message() {
+    return this.toString();
+  }
+
+  public toString(): string {
+    return `[MegabrainAPIError:${this.method}] ${this.description}\nerror: ${JSON.stringify(
+      this,
+      null,
+      2
+    )}`;
   }
 }
 
