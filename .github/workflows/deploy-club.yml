@@ -32,7 +32,7 @@ jobs:
           context: .
           platforms: linux/amd64
           push: true
-          tags: byungjinlee/byungjin-pri:latest
+          tags: byungjinlee/megabrain-club-app:latest
           file: dockerFiles/club.Dockerfile
           cache-from: type=gha
           cache-to: type=gha,mode=max
