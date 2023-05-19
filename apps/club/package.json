@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@megabrain/core": "workspace:^",
+    "@megabrain/toolkit-notion": "workspace:^",
     "@megabrain/ui": "workspace:^",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.1",

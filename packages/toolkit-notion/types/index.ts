@@ -1,1 +1,1 @@
-export const types = () => 'types';
+export * from './global';
