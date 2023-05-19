@@ -1,4 +1,4 @@
-import { Recruit, RecruitDatabaseCollection, RecruitDatabaseCollectionItem } from '../types/notion';
+import { Recruit, RecruitDatabaseCollection, RecruitDatabaseCollectionItem } from '../types';
 
 const recruitProperties = [
   { key: 'id', type: 'string' },

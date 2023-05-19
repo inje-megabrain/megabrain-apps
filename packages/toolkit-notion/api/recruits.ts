@@ -4,8 +4,6 @@ import {
 } from '../utils/recruit';
 import { notionClient } from './base';
 
-export { notionClient } from './base';
-
 export const getRawRecruitList = async () =>
   notionClient
     ? await notionClient.databases.query({

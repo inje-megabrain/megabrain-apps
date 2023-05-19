@@ -20,6 +20,10 @@ export interface NotionDateProperty {
   };
 }
 
+export interface NotionNumberProperty {
+  number: number;
+}
+
 export interface NotionHrefProperty {
   url: string;
 }

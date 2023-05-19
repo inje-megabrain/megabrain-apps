@@ -17,12 +17,9 @@ const Waka: React.FC<WakaProps> = ({ members }) => {
   );
 };
 
-// export const getStaticPaths: GetStaticPaths = async () => {
-//   return { paths: [], fallback: 'blocking' };
-// };
-
 export const getStaticProps: GetStaticProps<WakaProps> = async () => {
   const members = await backend.wakas.members();
+
   return {
     props: {
       members,
