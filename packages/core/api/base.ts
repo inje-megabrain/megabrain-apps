@@ -15,7 +15,7 @@ if (typeof window !== 'undefined' && !IS_PRODUCTION) {
 const __MOCK_MODE_LOCAL =
   typeof window !== 'undefined' && !IS_PRODUCTION
     ? localStorage.getItem(__MOCK_MODE_LOCAL_KEY)
-    : false;
+    : `${true}`; // ! SSR의 경우, 초기 로딩 시에는 해당 값이 browser에서 읽히지 않음으로 이 값을 조정하여 SSR의 경우에도 MOCK-MODE의 초기 설정을 변경합니다.
 
 const MOCKING_MODE = __MOCK_MODE_LOCAL === 'true'; // Local Storage's value was stored 'string'
 
@@ -70,7 +70,7 @@ export const fetcher = fetcherMethods.reduce((_fetcher, item) => {
 
 //#region Endpoint
 
-interface EndpointOption<TPayload, TResult> {
+export interface EndpointOption<TPayload, TResult> {
   request?: (payload: TPayload) => FetchOption;
   mock?: (payload: TPayload) => Promise<TResult>;
   /** Mock Function을 새로 이용하지 않고 기본값으로 사용합니다 */
@@ -94,7 +94,7 @@ const createMockFetcher = <TMock = unknown>(mock?: TMock) => {
   }
 };
 
-export const createEndpoint = <TResult = unknown, TPayload = string>(
+export const createEndpoint = <TResult = unknown, TPayload = void>(
   method: FetchMethod,
   compute: (payload: TPayload) => string,
   option?: EndpointOption<TPayload, TResult>
