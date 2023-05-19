@@ -120,6 +120,18 @@ export const createEndpoint = <TResult = unknown, TPayload = void>(
     compute,
   });
 };
+
+export const transformEndpoint = <Transformed, TResult, TPayload>(
+  endpoint: Endpoint<TPayload, TResult>,
+  transform: (raw: TResult) => Transformed
+): Endpoint<TPayload, Transformed> => {
+  const fetchWithTransform = async (p: TPayload) => transform(await endpoint(p));
+
+  return Object.assign(fetchWithTransform, {
+    compute: endpoint.compute,
+  });
+};
+
 //#endregion
 
 //#region MegabrainAPIError

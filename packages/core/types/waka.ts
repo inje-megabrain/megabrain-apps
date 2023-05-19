@@ -1,4 +1,4 @@
-export interface WakaMemberReponse {
+export interface WakaMemberResponse {
   id: string;
   name: string;
   organization: string;
@@ -6,15 +6,15 @@ export interface WakaMemberReponse {
   fourteenDays: string;
   secretKey: string;
   thirtyDays: string;
-  projects: any[];
-  languages: any[];
-  editors: any[];
+  projects: WakaRawUnit[];
+  languages: WakaRawUnit[];
+  editors: WakaRawUnit[];
   sevenprojects: WakaRawUnit[];
   sevenlanguages: WakaRawUnit[];
   seveneditors: WakaRawUnit[];
-  thirtyDaysProjects: any[];
-  thirtyDaysLanguage: any[];
-  thirtyDaysEditors: any[];
+  thirtyDaysProjects: WakaRawUnit[];
+  thirtyDaysLanguage: WakaRawUnit[];
+  thirtyDaysEditors: WakaRawUnit[];
   startDate: string;
   updateDate: string;
 }
@@ -32,8 +32,8 @@ export interface WakaMember {
   seven: WakaPeriod;
   fourteen: WakaPeriod;
   thirty: WakaPeriod;
-  startDate: string;
-  updateDate: string;
+  startDate: number;
+  updateDate: number;
 }
 
 export interface WakaPeriod {
@@ -41,14 +41,12 @@ export interface WakaPeriod {
   projects: WakaUnit[];
   languages: WakaUnit[];
   editors: WakaUnit[];
-  startDate: Date;
-  updateDate: Date;
 }
 
 export interface WakaUnit {
   id: number;
   name: string;
-  time: string; //"13 hrs 45 mins",
+  time: number; //"13 hrs 45 mins",
 }
 
 export enum WakaOrganization {

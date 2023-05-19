@@ -1,14 +1,14 @@
-import { WakaMember, WakaMemberAPIKeyUpdatePayload, WakaMemberPostPayload } from '../types';
-import { createEndpoint } from './base';
+import { WakaMemberAPIKeyUpdatePayload, WakaMemberPostPayload, WakaMemberResponse } from '../types';
+import { transformRawIntoWakaMember } from '../utils/waka';
+import { createEndpoint, transformEndpoint } from './base';
 
-export const getWakaMembers = createEndpoint<WakaMember[]>(
-  'GET',
-  () => `${global.core.WAKA_BASE_URL}/members`,
-  {
+export const getWakaMembers = transformEndpoint(
+  createEndpoint<WakaMemberResponse[]>('GET', () => `${global.core.WAKA_BASE_URL}/members`, {
     async mock() {
       return [];
     },
-  }
+  }),
+  (raw) => raw.map(transformRawIntoWakaMember)
 );
 
 export const postWakaMember = createEndpoint<void, WakaMemberPostPayload>(
