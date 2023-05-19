@@ -1,21 +1,17 @@
-interface ListProps<T> {
+import { Fragment } from 'react';
+
+export interface ListProps<T> {
   items: T[];
   getKey(item: T, index: number): string | number;
-  children: React.FC<{ item: T; seqNo: number }>;
+  children(item: T, seqNo: number): JSX.Element;
 }
 
 export const List = <T,>({ items, children, getKey }: ListProps<T>) => {
-  const Child = children;
-
   return (
     <>
       {Array.isArray(items)
         ? items.map((item, idx) => (
-            <Child
-              key={getKey ? getKey(item, idx) : idx}
-              item={item}
-              seqNo={idx}
-            />
+            <Fragment key={getKey(item, idx)}>{children(item, idx)}</Fragment>
           ))
         : null}
     </>

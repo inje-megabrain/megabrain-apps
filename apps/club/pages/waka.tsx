@@ -1,13 +1,18 @@
 import { GetStaticProps } from 'next';
-import { WakaMetadata, backend } from '@megabrain/core';
+import { WakaMember, backend } from '@megabrain/core';
 import { WAKA_REVALIDATE_SECOND } from '~/constants/isr';
+import { WakaMemberList } from '~/components';
 
 interface WakaProps {
-  metadata: WakaMetadata[];
+  members: WakaMember[];
 }
 
-const Waka: React.FC<WakaProps> = ({}) => {
-  return <>hello</>;
+const Waka: React.FC<WakaProps> = ({ members }) => {
+  return (
+    <>
+      <WakaMemberList members={members} />
+    </>
+  );
 };
 
 // export const getStaticPaths: GetStaticPaths = async () => {
@@ -15,11 +20,10 @@ const Waka: React.FC<WakaProps> = ({}) => {
 // };
 
 export const getStaticProps: GetStaticProps<WakaProps> = async () => {
-  const data = await backend.wakas.metadata();
-
+  const members = await backend.wakas.members();
   return {
     props: {
-      metadata: data,
+      members,
     },
     revalidate: WAKA_REVALIDATE_SECOND,
   };

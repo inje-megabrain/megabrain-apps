@@ -15,7 +15,7 @@ if (typeof window !== 'undefined' && !IS_PRODUCTION) {
 const __MOCK_MODE_LOCAL =
   typeof window !== 'undefined' && !IS_PRODUCTION
     ? localStorage.getItem(__MOCK_MODE_LOCAL_KEY)
-    : `${true}`; // ! SSR의 경우, 초기 로딩 시에는 해당 값이 browser에서 읽히지 않음으로 이 값을 조정하여 SSR의 경우에도 MOCK-MODE의 초기 설정을 변경합니다.
+    : `${false}`; // ! SSR의 경우, 초기 로딩 시에는 해당 값이 browser에서 읽히지 않음으로 이 값을 조정하여 SSR의 경우에도 MOCK-MODE의 초기 설정을 변경합니다.
 
 const MOCKING_MODE = __MOCK_MODE_LOCAL === 'true'; // Local Storage's value was stored 'string'
 
