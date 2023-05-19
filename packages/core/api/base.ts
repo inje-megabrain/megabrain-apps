@@ -73,6 +73,8 @@ export const fetcher = fetcherMethods.reduce((_fetcher, item) => {
 interface EndpointOption<TPayload, TResult> {
   request?: (payload: TPayload) => FetchOption;
   mock?: (payload: TPayload) => Promise<TResult>;
+  /** Mock Function을 새로 이용하지 않고 기본값으로 사용합니다 */
+  mirror?: boolean;
 }
 
 export type Endpoint<TPayload = unknown, TResult = unknown> = ((
@@ -81,7 +83,7 @@ export type Endpoint<TPayload = unknown, TResult = unknown> = ((
   compute(payload: TPayload): string;
 };
 
-const mockFetcher = <TMock = unknown>(mock?: TMock) => {
+const createMockFetcher = <TMock = unknown>(mock?: TMock) => {
   if (typeof mock === 'function') {
     return mock;
   } else {
@@ -99,16 +101,21 @@ export const createEndpoint = <TResult = unknown, TPayload = string>(
 ): Endpoint<TPayload, TResult> => {
   // endpoint url를 자동으로 계산하여 payload만 인자로 받는 fetcher 함수를 생성합니다.
 
-  const fetcherWithComputedEndpoint = MOCKING_MODE
-    ? // Mock Mode 인 경우 등록된 함수로 Mocking 합니다
-      (p: TPayload) => mockFetcher(option?.mock)(p)
-    : // 일반적인 Fetcher 함수 생성
-      (p: TPayload) =>
-        fetcher[method]<TResult>(
-          compute(p),
-          // 자동으로 endpoint를 계산해줍니다. 이를 통해 함수는 endpoint를 주입받습니다.
-          option?.request ? option.request(p) : undefined
-        );
+  // 일반적인 Fetcher 함수 생성
+  const __computedFetcher = (p: TPayload) =>
+    fetcher[method]<TResult>(
+      compute(p),
+      // 자동으로 endpoint를 계산해줍니다. 이를 통해 함수는 endpoint를 주입받습니다.
+      option?.request ? option.request(p) : undefined
+    );
+
+  let fetcherWithComputedEndpoint = __computedFetcher;
+
+  // Mock Mode 인 경우 등록된 함수로 Mocking 합니다
+  if (MOCKING_MODE && !option?.mirror) {
+    fetcherWithComputedEndpoint = createMockFetcher(option?.mock);
+  }
+
   return Object.assign(fetcherWithComputedEndpoint, {
     compute,
   });
