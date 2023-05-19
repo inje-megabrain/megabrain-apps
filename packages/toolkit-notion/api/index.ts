@@ -1,1 +1,2 @@
-export const test = () => 'hello';
+export * from './members';
+export * from './recruits';

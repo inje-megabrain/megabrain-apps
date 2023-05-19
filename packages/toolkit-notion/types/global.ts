@@ -9,5 +9,7 @@ declare global {
 
 interface MegabrainNotionToolkit {
   SECRET_KEY: string;
-  WORKSPACE: string;
+  RECRUIT_DB_ID: string;
+  MEMBER_DB_ID: string;
+  VERSION: string;
 }
