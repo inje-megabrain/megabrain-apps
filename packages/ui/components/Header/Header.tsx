@@ -1,13 +1,86 @@
-import BaseHeader from './Header.style';
+import { forwardRef, useState } from 'react';
 
-export const Header: React.FC = () => {
+import { HeaderProps } from './types';
+import BaseHeader from './Header.style';
+import Hamburger from './Hamburger.style';
+import { BaseMobileMenu } from './MobileMenu.style';
+
+export const Header = forwardRef<HTMLDivElement, HeaderProps>(({ menuItems, onHrefClick }, ref) => {
+  const [hambugerOpen, setHamburgerOpen] = useState(false);
+  const onHamburgerClick = () => {
+    setHamburgerOpen(!hambugerOpen);
+  };
   return (
-    <BaseHeader>
-      <div>로고자리</div>
-      <button>버튼자리</button>
-      <button>액션버튼자리</button>
+    <BaseHeader ref={ref}>
+      <p>Megabrain Logo</p>
+      <ul>
+        {menuItems.map((item) => (
+          <li key={item.href}>
+            <button onClick={() => onHrefClick(item.href)}>{item.label}</button>
+            {item.children && (
+              <div>
+                <ul>
+                  {item.children.map((child) => (
+                    <li key={child.href}>
+                      <button onClick={() => onHrefClick(child.href)}>{child.label}</button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
+      <Hamburger onClick={onHamburgerClick}>
+        <svg
+          color="#46FF46"
+          viewBox="0 0 100 100"
+          width="22"
+          height="22"
+        >
+          <rect
+            width="97"
+            height="14"
+            rx="8"
+          ></rect>
+          <rect
+            y="40"
+            width="97"
+            height="14"
+            rx="8"
+          ></rect>
+          <rect
+            y="80"
+            width="97"
+            height="14"
+            rx="8"
+          ></rect>
+        </svg>
+      </Hamburger>
+      {hambugerOpen && (
+        <BaseMobileMenu>
+          <button onClick={onHamburgerClick}>X</button>
+          <ul>
+            {menuItems.map((item) => (
+              <li key={item.href}>
+                <button onClick={() => onHrefClick(item.href)}>{item.label}</button>
+                {item.children && (
+                  <ul>
+                    {item.children.map((child) => (
+                      <li key={child.href}>
+                        <button onClick={() => onHrefClick(child.href)}>{child.label}</button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
+        </BaseMobileMenu>
+      )}
     </BaseHeader>
   );
-};
+});
 
+Header.displayName = 'Header';
 export default Header;
