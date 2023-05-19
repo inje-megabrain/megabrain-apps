@@ -6,18 +6,19 @@ export const Hamburger = styled('button', {
   $$onColor: '$colors$accent-r',
 
   fill: '$$backgroundColor',
-  width: '56px',
-  height: '56px',
+  width: '44px',
+  height: '44px',
   border: '0',
   opacity: '0',
   transition: 'all 0.15s ease-in-out',
   backgroundColor: 'transparent',
-  cursor: 'pointer',
+  cursor: 'default',
   '&:hover': {
     $$color: '$$onColor',
   },
   '@mobile': {
     opacity: '1',
+    cursor: 'pointer',
   },
 });
 

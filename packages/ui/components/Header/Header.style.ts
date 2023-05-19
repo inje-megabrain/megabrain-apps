@@ -5,16 +5,28 @@ export const BaseHeader = styled('header', {
   $$backgroundColor: '$colors$primary',
   $$onColor: '$colors$accent-r',
 
-  width: '100vw',
-  maxWidth: '100vw',
-  height: '56px',
+  width: '100%',
+  maxWidth: '100%',
+  height: '44px',
   backgroundColor: '$$backgroundColor',
   color: '$$color',
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  padding: '0',
-  margin: '0',
+
+  '@mobile': {
+    ul: {
+      display: 'none',
+      li: {
+        div: {
+          ul: {
+            display: 'flex',
+          },
+        },
+      },
+    },
+  },
+
   ul: {
     display: 'flex',
     justifyContent: 'center',
@@ -27,7 +39,6 @@ export const BaseHeader = styled('header', {
       listStyle: 'none',
       margin: '0 4px',
       button: {
-        width: '80px',
         height: '100%',
         padding: '8px 16px',
         color: '$$color',
@@ -54,7 +65,7 @@ export const BaseHeader = styled('header', {
           pointerEvents: 'none',
           display: 'flex',
           margin: '0',
-          top: '56px',
+          top: '44px',
           left: '0',
           flexDirection: 'row',
           backgroundColor: '$$backgroundColor',
@@ -85,11 +96,6 @@ export const BaseHeader = styled('header', {
           },
         },
       },
-    },
-  },
-  '@mobile': {
-    ul: {
-      display: 'none',
     },
   },
 });

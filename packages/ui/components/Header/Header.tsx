@@ -1,5 +1,4 @@
 import { forwardRef, useState } from 'react';
-import { Logo } from '@megabrain/ui';
 
 import { HeaderProps } from './types';
 import BaseHeader from './Header.style';
@@ -13,7 +12,7 @@ export const Header = forwardRef<HTMLDivElement, HeaderProps>(({ menuItems, onHr
   };
   return (
     <BaseHeader ref={ref}>
-      <Logo />
+      <p>Megabrain Logo</p>
       <ul>
         {menuItems.map((item) => (
           <li key={item.href}>
