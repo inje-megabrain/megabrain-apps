@@ -18,7 +18,6 @@ export const BaseFooter = styled('header', {
     height: 'min-content' /* 137px */,
     display: 'flex',
     flexDirection: 'row',
-    width: '100%',
     justifyContent: 'center',
     alignItems: 'self-start',
     overflow: 'visible',

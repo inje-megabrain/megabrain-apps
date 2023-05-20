@@ -1,9 +1,9 @@
 /* eslint-disable */
 import { forwardRef } from 'react';
-import LightLogo from './logo-light.svg';
+import LightLogo from '@megabrain/ui/assets/logo-light.svg';
 import { LogoProps } from './types';
 
-export const Logo = forwardRef<HTMLOrSVGElement, LogoProps>(({ size = 'medium' }, ref) => {
+export const Logo = forwardRef<SVGElement, LogoProps>(({ size = 'medium' }, ref) => {
   return (
     <span>
       <LightLogo

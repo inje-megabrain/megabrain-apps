@@ -2,6 +2,7 @@ import { styled } from '@megabrain/ui/styles';
 
 export const BaseContainer = styled('div', {
   display: 'block',
+  maxWidth: '100%',
 
   variants: {
     //#region Display

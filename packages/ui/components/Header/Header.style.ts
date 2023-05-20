@@ -5,7 +5,7 @@ export const BaseHeader = styled('header', {
   $$backgroundColor: '$colors$primary',
   $$onColor: '$colors$accent-r',
 
-  width: '100%',
+  padding: '0 20px',
   maxWidth: '100%',
   height: '44px',
   backgroundColor: '$$backgroundColor',
