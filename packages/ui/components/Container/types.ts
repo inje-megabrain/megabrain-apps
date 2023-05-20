@@ -25,6 +25,7 @@ export interface ContainerProps {
   full?: Direction;
   layoutCenter?: boolean;
   gravity?: Direction;
+  flow?: boolean;
 }
 
 type FlexJustify = 'end' | 'start' | 'between' | 'evenly' | 'around' | 'center' | 'left' | 'right';
@@ -34,7 +35,7 @@ type FlexAlignItems = 'base' | 'center' | 'start' | 'end';
 export interface FlexProps extends ContainerProps {
   inline?: boolean;
   nowrap?: boolean;
-  flow?: boolean;
+
   justify?: FlexJustify;
   items?: FlexAlignItems;
 }

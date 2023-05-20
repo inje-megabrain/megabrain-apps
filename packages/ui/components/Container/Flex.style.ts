@@ -17,12 +17,6 @@ export const BaseFlex = styled(BaseContainer, {
       },
     },
 
-    flow: {
-      true: {
-        flex: 1,
-      },
-    },
-
     //#region JustifyContent
     justify: {
       end: {

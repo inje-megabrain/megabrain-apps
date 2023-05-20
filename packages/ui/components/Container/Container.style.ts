@@ -19,6 +19,12 @@ export const BaseContainer = styled('div', {
     },
     //#endregion
 
+    flow: {
+      true: {
+        flex: 1,
+      },
+    },
+
     //#region Padding
     pad: {
       true: {
