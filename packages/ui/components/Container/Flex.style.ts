@@ -17,6 +17,21 @@ export const BaseFlex = styled(BaseContainer, {
       },
     },
 
+    direction: {
+      row: {
+        flexDirection: 'row',
+      },
+      col: {
+        flexDirection: 'column',
+      },
+      'row-reverse': {
+        flexDirection: 'row-reverse',
+      },
+      'col-reverse': {
+        flexDirection: 'column-reverse',
+      },
+    },
+
     //#region JustifyContent
     justify: {
       end: {

@@ -7,6 +7,9 @@ export const BaseContainer = styled('div', {
     //#region Display
 
     display: {
+      none: {
+        display: 'none',
+      },
       block: {
         display: 'block',
       },
@@ -15,6 +18,12 @@ export const BaseContainer = styled('div', {
       },
       inline: {
         display: 'inline',
+      },
+      flex: {
+        display: 'flex',
+      },
+      grid: {
+        display: 'grid',
       },
     },
     //#endregion
@@ -85,12 +94,10 @@ export const BaseContainer = styled('div', {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100%',
       },
       vertical: {
         display: 'flex',
         alignItems: 'center',
-        height: '100%',
       },
       horizontal: {
         display: 'flex',
