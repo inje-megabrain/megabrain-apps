@@ -72,6 +72,9 @@ const WakaMemberListItem: ListProps<WakaMember, AdditionalProps>['children'] = (
         <Flex
           direction="col"
           items="center"
+          css={{
+            paddingRight: 20,
+          }}
         >
           <img
             src={randomImageUrl(item.name)}

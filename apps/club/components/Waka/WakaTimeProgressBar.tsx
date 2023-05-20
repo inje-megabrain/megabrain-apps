@@ -23,7 +23,7 @@ export const WakaTimeProgressBar: React.FC<WakaTimeProgressBarProps> = ({ time, 
         progressBorder
         trackBorder
         trackCss={trackBarStyle}
-        progressCss={{ background: randomHexColor() }}
+        progressCss={{ background: randomHexColor(0xe6e8ee, 0x121212) }}
         percentage={calcPercentage(time, limit) + '%'}
       />
       <Flex
