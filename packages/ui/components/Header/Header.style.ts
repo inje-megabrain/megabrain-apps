@@ -16,7 +16,6 @@ export const BaseHeader = styled('header', {
 
   '@mobile': {
     ul: {
-      display: 'none',
       li: {
         div: {
           ul: {
@@ -96,6 +95,9 @@ export const BaseHeader = styled('header', {
           },
         },
       },
+    },
+    '@mobile': {
+      display: 'none',
     },
   },
 });
