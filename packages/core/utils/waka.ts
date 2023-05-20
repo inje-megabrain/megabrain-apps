@@ -58,6 +58,13 @@ const parseWakUnit = (u: WakaRawUnit): WakaUnit => {
   };
 };
 
+export const wakaNumberToTime = (val: number) => {
+  return {
+    hour: Math.trunc(val / 60),
+    minute: val % 60,
+  };
+};
+
 export const WakaPeriodToString = {
   [WakaPeriod.Seven]: '7일',
   [WakaPeriod.Fourteen]: '14일',
