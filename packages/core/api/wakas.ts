@@ -24,10 +24,13 @@ export const updateWakaMemberAPIKey = createEndpoint<void, WakaMemberAPIKeyUpdat
   { mirror: true }
 );
 
+export const deleteWakaMember = createEndpoint('DELETE', (id: string) => `/waka/members/${id}`);
+
 const wakas = {
   members: getWakaMembers,
   updateAPIKey: updateWakaMemberAPIKey,
   postMember: postWakaMember,
+  deleteMember: deleteWakaMember,
 };
 
 export default wakas;

@@ -29,18 +29,24 @@ export interface WakaMember {
   id: string;
   name: string;
   organization: WakaOrganization;
-  seven: WakaPeriod;
-  fourteen: WakaPeriod;
-  thirty: WakaPeriod;
+  [WakaPeriod.Seven]: WakaDuring;
+  [WakaPeriod.Fourteen]?: WakaDuring;
+  [WakaPeriod.Thirty]?: WakaDuring;
   startDate: number;
   updateDate: number;
 }
 
-export interface WakaPeriod {
+export interface WakaDuring {
   during: number;
   projects: WakaUnit[];
   languages: WakaUnit[];
   editors: WakaUnit[];
+}
+
+export enum WakaPeriod {
+  Seven,
+  Fourteen,
+  Thirty,
 }
 
 export interface WakaUnit {

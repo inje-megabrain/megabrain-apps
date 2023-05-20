@@ -1,4 +1,11 @@
-import { WakaMember, WakaMemberResponse, WakaOrganization, WakaRawUnit, WakaUnit } from '../types';
+import {
+  WakaMember,
+  WakaMemberResponse,
+  WakaOrganization,
+  WakaPeriod,
+  WakaRawUnit,
+  WakaUnit,
+} from '../types';
 
 export const transformRawIntoWakaMember = (raw: WakaMemberResponse): WakaMember => {
   return {
@@ -7,23 +14,23 @@ export const transformRawIntoWakaMember = (raw: WakaMemberResponse): WakaMember 
     organization: raw.organization as WakaOrganization,
     startDate: new Date(raw.startDate).valueOf(),
     updateDate: new Date(raw.updateDate).valueOf(),
-    seven: {
+    [WakaPeriod.Seven]: {
       during: parseWakaStringTime(raw.sevenDays),
       projects: raw.sevenprojects.map(parseWakUnit),
       languages: raw.sevenlanguages.map(parseWakUnit),
       editors: raw.seveneditors.map(parseWakUnit),
     },
-    fourteen: {
+    [WakaPeriod.Fourteen]: {
       during: parseWakaStringTime(raw.fourteenDays),
       projects: [],
       languages: [],
       editors: [],
     },
-    thirty: {
+    [WakaPeriod.Thirty]: {
       during: parseWakaStringTime(raw.thirtyDays),
-      projects: raw.thirtyDaysProjects.map(parseWakUnit),
-      languages: raw.thirtyDaysLanguage.map(parseWakUnit),
-      editors: raw.thirtyDaysEditors.map(parseWakUnit),
+      projects: [], //raw.thirtyDaysProjects.map(parseWakUnit),
+      languages: [], //raw.thirtyDaysLanguage.map(parseWakUnit),
+      editors: [], //raw.thirtyDaysEditors.map(parseWakUnit),
     },
   };
 };
@@ -50,3 +57,9 @@ const parseWakUnit = (u: WakaRawUnit): WakaUnit => {
     time: minutes,
   };
 };
+
+export const WakaPeriodToString = {
+  [WakaPeriod.Seven]: '7일',
+  [WakaPeriod.Fourteen]: '14일',
+  [WakaPeriod.Thirty]: '30일',
+} as const;
