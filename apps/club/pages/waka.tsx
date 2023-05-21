@@ -53,6 +53,9 @@ const Waka: React.FC<WakaProps> = ({ members }) => {
 };
 
 export const getStaticProps: GetStaticProps<WakaProps> = async () => {
+  await backend.wakas.updateTime(7).catch(() => {
+    console.log('pass error');
+  });
   const members = await backend.wakas.members();
   return {
     props: {
