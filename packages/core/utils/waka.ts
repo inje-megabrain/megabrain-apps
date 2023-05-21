@@ -24,7 +24,7 @@ const wakaStringTimeRegx = /(\d+) hrs (\d+) mins/;
 const parseWakaStringTime = (time: string): number => {
   const matches = wakaStringTimeRegx.exec(time);
   if (matches) {
-    return parseInt(matches[0]) * 60 + parseInt(matches[1]);
+    return parseInt(matches[1]) * 60 + parseInt(matches[2]);
   } else {
     return 0;
   }
