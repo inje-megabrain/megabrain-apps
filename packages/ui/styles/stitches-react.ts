@@ -54,6 +54,8 @@ export const globalStyles = globalCss({
   },
 });
 
+globalStyles();
+
 export const darkTheme = createTheme('dark', {
   colors: {
     primary: '#ffffff',

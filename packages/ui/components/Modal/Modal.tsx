@@ -5,6 +5,10 @@ import { ModalElement } from './Modal.element';
 import { ModalProps } from './types';
 
 export const Modal = (props: ModalProps) => {
+  if (typeof document === 'undefined') {
+    return <ModalElement {...props} />;
+  }
+
   let modalRoot = document.querySelector(`#${MODAL_ROOT_ID}`);
 
   // 모달 루트가 없는 경우, 루트를 생성하여 넣어준다.

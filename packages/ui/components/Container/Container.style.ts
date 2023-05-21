@@ -2,10 +2,14 @@ import { styled } from '@megabrain/ui/styles';
 
 export const BaseContainer = styled('div', {
   display: 'block',
-
+  background: 'transparent',
   variants: {
     //#region Display
-
+    background: {
+      true: {
+        background: '$background',
+      },
+    },
     display: {
       none: {
         display: 'none',

@@ -4,7 +4,20 @@ import { ContainerProps } from './types';
 
 export const Container = forwardRef<HTMLDivElement, ContainerProps>(
   (
-    { display, pad, m, overflow, layoutCenter, gravity, css, children, full, flow, onClick },
+    {
+      display,
+      pad,
+      m,
+      background,
+      overflow,
+      layoutCenter,
+      gravity,
+      css,
+      children,
+      full,
+      flow,
+      onClick,
+    },
     ref
   ) => {
     return (
@@ -20,6 +33,7 @@ export const Container = forwardRef<HTMLDivElement, ContainerProps>(
         layoutCenter={layoutCenter}
         gravity={gravity}
         flow={flow}
+        background={background}
       >
         {children}
       </BaseContainer>
