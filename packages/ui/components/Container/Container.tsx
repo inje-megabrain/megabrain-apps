@@ -3,7 +3,25 @@ import { BaseContainer } from './Container.style';
 import { ContainerProps } from './types';
 
 export const Container = forwardRef<HTMLDivElement, ContainerProps>(
-  ({ display, pad, m, overflow, layoutCenter, gravity, css, children, full, onClick }, ref) => {
+  (
+    {
+      display,
+      pad,
+      modal,
+      m,
+      background,
+      overflow,
+      layoutCenter,
+      gravity,
+      border,
+      css,
+      children,
+      full,
+      flow,
+      onClick,
+    },
+    ref
+  ) => {
     return (
       <BaseContainer
         ref={ref}
@@ -16,6 +34,10 @@ export const Container = forwardRef<HTMLDivElement, ContainerProps>(
         full={full}
         layoutCenter={layoutCenter}
         gravity={gravity}
+        flow={flow}
+        background={background}
+        border={border}
+        modal={modal}
       >
         {children}
       </BaseContainer>

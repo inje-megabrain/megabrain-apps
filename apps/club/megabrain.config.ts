@@ -1,3 +1,4 @@
+import '@megabrain/toolkit-notion';
 import { defineConfig } from '@megabrain/core/config';
 
 defineConfig({

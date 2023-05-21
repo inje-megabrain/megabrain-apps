@@ -7,6 +7,7 @@ export const ModalElement: React.FC<ModalProps> = ({
   close,
   children,
   animation,
+  clearBackground,
 }) => {
   return (
     <BaseModal
@@ -14,6 +15,7 @@ export const ModalElement: React.FC<ModalProps> = ({
       open={open}
     >
       <BaseModalBackface
+        clearBackground={clearBackground}
         aria-hidden="true"
         animation={animation}
         onClick={close}

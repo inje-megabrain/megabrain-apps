@@ -1,27 +1,37 @@
-import { Flex, List, ListProps } from '@megabrain/ui';
+import { useEffect, useMemo } from 'react';
 import { WakaMember } from '@megabrain/core';
+
+import { useWakaMemberDispatch, useWakaMemberValue } from './contexts/member';
+import { WakaMemberListView, WakaMemberListViewAdditionalProps } from './WakaMemberListView';
 
 interface WakaMemberListProps {
   members: WakaMember[];
 }
 
 export const WakaMemberList: React.FC<WakaMemberListProps> = ({ members }) => {
-  const getMemberKey = (member: WakaMember) => member.id;
+  const value = useWakaMemberValue();
+  const dispatch = useWakaMemberDispatch();
+
+  useEffect(() => {
+    if (Array.isArray(members)) {
+      dispatch({ members });
+    }
+  }, [members, dispatch]);
+
+  const additional = useMemo<WakaMemberListViewAdditionalProps>(
+    () => ({
+      period: value.period,
+      limit: value.limit,
+    }),
+    [value]
+  );
 
   return (
-    <Flex>
-      <List
-        getKey={getMemberKey}
-        items={members}
-      >
-        {WakaMemberListItem}
-      </List>
-    </Flex>
+    <WakaMemberListView
+      members={value.members || members}
+      additional={additional}
+    />
   );
 };
 
 export default WakaMemberList;
-
-const WakaMemberListItem: ListProps<WakaMember>['children'] = (item) => {
-  return <>{item.name}</>;
-};

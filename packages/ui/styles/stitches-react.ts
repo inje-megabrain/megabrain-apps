@@ -1,5 +1,7 @@
 import { createStitches, CSS as StitchesCSS } from '@stitches/react';
 
+export * from '@stitches/react';
+
 const MODAL_ROOT_SELECTOR = `#modal-root`;
 export const MODAL_ROOT_ID = MODAL_ROOT_SELECTOR.slice(1);
 
@@ -51,6 +53,8 @@ export const globalStyles = globalCss({
     left: 0,
   },
 });
+
+globalStyles();
 
 export const darkTheme = createTheme('dark', {
   colors: {

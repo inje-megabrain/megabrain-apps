@@ -1,6 +1,6 @@
 import { styled, css } from '@megabrain/ui/styles';
 
-const baseTextCss = css({
+export const baseTextCss = css({
   color: 'inherit',
 
   fontWeight: 'inherit',
@@ -62,6 +62,13 @@ const baseTextCss = css({
       },
       right: {
         textAlign: 'right',
+      },
+    },
+
+    full: {
+      true: {
+        width: '100%',
+        height: '100%',
       },
     },
     //#endregion

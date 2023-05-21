@@ -6,17 +6,10 @@ export interface WakaMemberResponse {
   fourteenDays: string;
   secretKey: string;
   thirtyDays: string;
-  projects: WakaRawUnit[];
-  languages: WakaRawUnit[];
-  editors: WakaRawUnit[];
-  sevenprojects: WakaRawUnit[];
-  sevenlanguages: WakaRawUnit[];
-  seveneditors: WakaRawUnit[];
-  thirtyDaysProjects: WakaRawUnit[];
-  thirtyDaysLanguage: WakaRawUnit[];
-  thirtyDaysEditors: WakaRawUnit[];
+  money: WakaRawMoney;
+  image: string;
+  department: string;
   startDate: string;
-  updateDate: string;
 }
 
 export interface WakaRawUnit {
@@ -29,18 +22,37 @@ export interface WakaMember {
   id: string;
   name: string;
   organization: WakaOrganization;
-  seven: WakaPeriod;
-  fourteen: WakaPeriod;
-  thirty: WakaPeriod;
+  money: number;
+  image: string;
+  department: WakaDepartment;
+  [WakaPeriod.Seven]: number;
+  [WakaPeriod.Fourteen]: number;
+  [WakaPeriod.Thirty]: number;
   startDate: number;
-  updateDate: number;
 }
 
-export interface WakaPeriod {
+export interface WakaRawMoney {
+  id: number;
+  amount: number;
+  updateDate: Date;
+}
+
+export enum WakaDepartment {
+  Backend = 'Backend',
+  Frontend = 'Frontend',
+}
+
+export interface WakaDuring {
   during: number;
   projects: WakaUnit[];
   languages: WakaUnit[];
   editors: WakaUnit[];
+}
+
+export enum WakaPeriod {
+  Seven,
+  Fourteen,
+  Thirty,
 }
 
 export interface WakaUnit {
@@ -58,6 +70,8 @@ export interface WakaMemberPostPayload {
   name: string;
   organization: WakaOrganization;
   apiKey: string;
+  githubName: string;
+  department: WakaDepartment;
 }
 
 export interface WakaMemberAPIKeyUpdatePayload {

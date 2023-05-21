@@ -26,6 +26,11 @@ export const BaseModalBackface = styled('div', {
   inset: '0px',
 
   variants: {
+    clearBackground: {
+      true: {
+        backgroundColor: 'inherit',
+      },
+    },
     animation: {
       true: {}, // ! TODO
     },

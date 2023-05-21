@@ -17,9 +17,18 @@ export const BaseFlex = styled(BaseContainer, {
       },
     },
 
-    flow: {
-      true: {
-        flex: 1,
+    direction: {
+      row: {
+        flexDirection: 'row',
+      },
+      col: {
+        flexDirection: 'column',
+      },
+      'row-reverse': {
+        flexDirection: 'row-reverse',
+      },
+      'col-reverse': {
+        flexDirection: 'column-reverse',
       },
     },
 

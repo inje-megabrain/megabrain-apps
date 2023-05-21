@@ -1,4 +1,10 @@
-import { WakaMember, WakaMemberResponse, WakaOrganization, WakaRawUnit, WakaUnit } from '../types';
+import {
+  WakaDepartment,
+  WakaMember,
+  WakaMemberResponse,
+  WakaOrganization,
+  WakaPeriod,
+} from '../types';
 
 export const transformRawIntoWakaMember = (raw: WakaMemberResponse): WakaMember => {
   return {
@@ -6,25 +12,12 @@ export const transformRawIntoWakaMember = (raw: WakaMemberResponse): WakaMember 
     name: raw.name,
     organization: raw.organization as WakaOrganization,
     startDate: new Date(raw.startDate).valueOf(),
-    updateDate: new Date(raw.updateDate).valueOf(),
-    seven: {
-      during: parseWakaStringTime(raw.sevenDays),
-      projects: raw.sevenprojects.map(parseWakUnit),
-      languages: raw.sevenlanguages.map(parseWakUnit),
-      editors: raw.seveneditors.map(parseWakUnit),
-    },
-    fourteen: {
-      during: parseWakaStringTime(raw.fourteenDays),
-      projects: [],
-      languages: [],
-      editors: [],
-    },
-    thirty: {
-      during: parseWakaStringTime(raw.thirtyDays),
-      projects: raw.thirtyDaysProjects.map(parseWakUnit),
-      languages: raw.thirtyDaysLanguage.map(parseWakUnit),
-      editors: raw.thirtyDaysEditors.map(parseWakUnit),
-    },
+    image: raw.image,
+    money: parseWakaMoney(raw.money),
+    department: raw.department as WakaDepartment,
+    [WakaPeriod.Seven]: parseWakaStringTime(raw.sevenDays),
+    [WakaPeriod.Fourteen]: parseWakaStringTime(raw.fourteenDays),
+    [WakaPeriod.Thirty]: parseWakaStringTime(raw.thirtyDays),
   };
 };
 const wakaStringTimeRegx = /(\d+) hrs (\d+) mins/;
@@ -36,17 +29,31 @@ const parseWakaStringTime = (time: string): number => {
     return 0;
   }
 };
-const wakaUnitTimeRegx = /(\d+):(\d+)/;
-const parseWakUnit = (u: WakaRawUnit): WakaUnit => {
-  let minutes = 0;
+const parseWakaMoney = (raw: WakaMemberResponse['money']) => raw.amount;
+// const wakaUnitTimeRegx = /(\d+):(\d+)/;
+// const parseWakUnit = (u: WakaRawUnit): WakaUnit => {
+//   let minutes = 0;
 
-  const matches = wakaUnitTimeRegx.exec(u.time);
-  if (matches) {
-    minutes = parseInt(matches[0]) * 60 + parseInt(matches[1]);
-  }
+//   const matches = wakaUnitTimeRegx.exec(u.time);
+//   if (matches) {
+//     minutes = parseInt(matches[0]) * 60 + parseInt(matches[1]);
+//   }
+//   return {
+//     id: u.id,
+//     name: u.name,
+//     time: minutes,
+//   };
+// };
+
+export const wakaNumberToTime = (val: number) => {
   return {
-    id: u.id,
-    name: u.name,
-    time: minutes,
+    hour: Math.trunc(val / 60),
+    minute: val % 60,
   };
 };
+
+export const WakaPeriodToString = {
+  [WakaPeriod.Seven]: '7일',
+  [WakaPeriod.Fourteen]: '14일',
+  [WakaPeriod.Thirty]: '30일',
+} as const;
