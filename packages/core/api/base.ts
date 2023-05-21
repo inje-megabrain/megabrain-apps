@@ -25,21 +25,19 @@ if (__MOCK_MODE_LOCAL === null && !IS_PRODUCTION)
 
 //#region
 
-type APIResponse<TData = unknown> = TData; // or { data: TData }
+// type APIResponse<TData = unknown> = TData; // or { data: TData }
 
-const unwrapResponse = async (response: Response) => {
-  const json = (await response.json()) as APIResponse;
-  // eslint-disable-next-line
-  return json as any;
-};
+// const unwrapResponse = async (response: Response) => {
+//   const json = (await response.json()) as APIResponse;
+//   // eslint-disable-next-line
+//   return json as any;
+// };
 
 //#endregion
 
 //#region Fetcher
 
-type FetcherFunction = <TResult = unknown>(
-  ...args: Parameters<typeof fetch>
-) => Promise<APIResponse<TResult>>;
+type FetcherFunction = (...args: Parameters<typeof fetch>) => Promise<Response | undefined>;
 
 type FetchOption = Parameters<FetcherFunction>[1];
 
@@ -54,11 +52,10 @@ const fetchErrorHandler = (err: MegabrainAPIError) => {
 export const fetcher = fetcherMethods.reduce((_fetcher, item) => {
   _fetcher[item] = async (...args) => {
     try {
-      const response = await fetch(args[0], {
+      return await fetch(args[0], {
         method: item,
         ...args[1],
       });
-      return await unwrapResponse(response);
     } catch (err) {
       fetchErrorHandler(MegabrainAPIError.of(item, 'Fail to Fetch', args));
     }
@@ -73,6 +70,7 @@ export const fetcher = fetcherMethods.reduce((_fetcher, item) => {
 export interface EndpointOption<TPayload, TResult> {
   request?: (payload: TPayload) => FetchOption;
   mock?: (payload: TPayload) => Promise<TResult>;
+  successOnly?: boolean;
   /** Mock Function을 새로 이용하지 않고 기본값으로 사용합니다 */
   mirror?: boolean;
 }
@@ -102,12 +100,18 @@ export const createEndpoint = <TResult = unknown, TPayload = void>(
   // endpoint url를 자동으로 계산하여 payload만 인자로 받는 fetcher 함수를 생성합니다.
 
   // 일반적인 Fetcher 함수 생성
-  const __computedFetcher = (p: TPayload) =>
-    fetcher[method]<TResult>(
+  const __computedFetcher = async (p: TPayload) => {
+    const response = await fetcher[method](
       compute(p),
       // 자동으로 endpoint를 계산해줍니다. 이를 통해 함수는 endpoint를 주입받습니다.
       option?.request ? option.request(p) : undefined
     );
+    if (option?.successOnly) {
+      return response?.status === 200;
+    } else {
+      return await response?.json();
+    }
+  };
 
   let fetcherWithComputedEndpoint = __computedFetcher;
 

@@ -13,9 +13,9 @@ export const getWakaMembers = transformEndpoint(
 
 export const postWakaMember = createEndpoint<void, WakaMemberPostPayload>(
   'POST',
-  ({ organization, name, apiKey }) =>
-    `${global.core.WAKA_BASE_URL}/${name}?organization=${organization}&apiKey=${apiKey}`,
-  { mirror: true }
+  ({ organization, name, apiKey, githubName, department }) =>
+    `${global.core.WAKA_BASE_URL}/${name}?organization=${organization}&apiKey=${apiKey}&github_Id=${githubName}&department=${department}`,
+  { mirror: true, successOnly: true }
 );
 
 export const updateWakaMemberAPIKey = createEndpoint<void, WakaMemberAPIKeyUpdatePayload>(
@@ -24,13 +24,22 @@ export const updateWakaMemberAPIKey = createEndpoint<void, WakaMemberAPIKeyUpdat
   { mirror: true }
 );
 
-export const deleteWakaMember = createEndpoint('DELETE', (id: string) => `/waka/members/${id}`);
+export const deleteWakaMember = createEndpoint(
+  'DELETE',
+  (id: string) => `${global.core.WAKA_BASE_URL}/waka/members/${id}`
+);
+
+export const updateWakaMemberTime = createEndpoint(
+  'POST',
+  (range: 1 | 7 | 14 | 30) => `${global.core.WAKA_BASE_URL}/waka/members?date=${range}`
+);
 
 const wakas = {
   members: getWakaMembers,
   updateAPIKey: updateWakaMemberAPIKey,
   postMember: postWakaMember,
   deleteMember: deleteWakaMember,
+  updateTime: updateWakaMemberTime,
 };
 
 export default wakas;
