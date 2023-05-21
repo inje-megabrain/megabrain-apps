@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@megabrain/eslint-config": "workspace:^",
+    "@svgr/webpack": "^8.0.1",
     "@types/eslint": "^8",
     "@types/node": "20.1.2",
     "@types/react": "18.2.6",

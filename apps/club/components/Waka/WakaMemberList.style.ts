@@ -10,5 +10,27 @@ export const informationStyle = {
   },
 };
 export const progressWrapperStyle = {
-  marginTop: 10,
+  // marginTop: 10,
+  '@mobile': {
+    width: '275px',
+    margin: '0 auto',
+  },
+};
+
+export const listContainerStyle = {
+  '& hr': {
+    width: '60%',
+    borderWidth: '0.1px',
+    margin: '25px auto',
+  },
+
+  '& p': {
+    margin: '0 0 10px 0',
+  },
+
+  '@mobile': {
+    '& hr': {
+      width: '120px',
+    },
+  },
 };

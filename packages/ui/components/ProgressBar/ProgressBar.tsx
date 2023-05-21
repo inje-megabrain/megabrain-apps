@@ -5,7 +5,6 @@ import { CSS } from '@megabrain/ui/styles';
 
 export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
   ({ progressCss, trackCss, percentage, animation, progressBorder, trackBorder }, ref) => {
-    console.log(percentage);
     return (
       <BaseProgressTrack
         ref={ref}

@@ -6,7 +6,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       icon,
+      full,
       type = 'text',
+      pad,
       color = 'primary',
       size = 'medium',
       children,
@@ -26,6 +28,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         color={color}
         size={size}
         css={css}
+        full={full}
+        pad={pad}
         iconOnly={iconOnly}
         onClick={disabled ? undefined : onClick}
         disabled={disabled}

@@ -11,6 +11,7 @@ type TextAlign = 'center' | 'left' | 'right';
 type TextWeight = 'thin' | 'normal' | 'bold';
 
 export interface TextProps {
+  full?: boolean;
   tag?: keyof typeof baseTextComponent;
   css?: CSS;
   children: string; // Only String

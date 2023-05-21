@@ -4,12 +4,25 @@ export const BaseContainer = styled('div', {
   display: 'block',
   background: 'transparent',
   variants: {
-    //#region Display
     background: {
       true: {
         background: '$background',
       },
     },
+    border: {
+      true: {
+        borderRadius: '8px',
+      },
+    },
+    modal: {
+      true: {
+        position: 'absolute',
+        top: '50%',
+        right: '50%',
+        transform: 'translate(50%,-50%)',
+      },
+    },
+    //#region Display
     display: {
       none: {
         display: 'none',
@@ -113,7 +126,7 @@ export const BaseContainer = styled('div', {
         width: 975,
         margin: '0px auto',
         '@tablet': {
-          width: 750,
+          width: 620,
         },
         '@mobile': {
           width: 580,

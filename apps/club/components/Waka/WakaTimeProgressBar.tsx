@@ -3,15 +3,22 @@ import { wakaNumberToTime } from '@megabrain/core';
 import { Flex, ProgressBar, Text, CSS } from '@megabrain/ui';
 
 import { progressIndicatorStyle, trackBarStyle } from './WakaTimeProgressBar.style';
-import { calcPercentage, randomHexColor } from '~/utils';
+import { calcPercentage } from '~/utils';
+import { getProgressBarColor } from './utils';
 
 interface WakaTimeProgressBarProps {
   time: number;
   limit: number;
   css?: BaseHTMLAttributes<HTMLDivElement> & CSS;
+  seqNo: number;
 }
 
-export const WakaTimeProgressBar: React.FC<WakaTimeProgressBarProps> = ({ time, limit, css }) => {
+export const WakaTimeProgressBar: React.FC<WakaTimeProgressBarProps> = ({
+  time,
+  limit,
+  css,
+  seqNo,
+}) => {
   return (
     <Flex
       flow
@@ -23,7 +30,7 @@ export const WakaTimeProgressBar: React.FC<WakaTimeProgressBarProps> = ({ time, 
         progressBorder
         trackBorder
         trackCss={trackBarStyle}
-        progressCss={{ background: randomHexColor(0xe6e8ee, 0x121212) }}
+        progressCss={{ background: getProgressBarColor(seqNo) }}
         percentage={calcPercentage(time, limit) + '%'}
       />
       <Flex
@@ -36,23 +43,12 @@ export const WakaTimeProgressBar: React.FC<WakaTimeProgressBarProps> = ({ time, 
         >
           0H
         </Text>
-        <Text
-          css={progressIndicatorStyle}
-          type="tertiary"
-        >
-          ㅤㅤ
-        </Text>
+
         <Text
           css={progressIndicatorStyle}
           type="tertiary"
         >
           {wakaNumberToTime(limit / 2).hour + 'H'}
-        </Text>
-        <Text
-          css={progressIndicatorStyle}
-          type="tertiary"
-        >
-          {wakaNumberToTime(limit / 1.5).hour + 'H'}
         </Text>
         <Text
           css={progressIndicatorStyle}

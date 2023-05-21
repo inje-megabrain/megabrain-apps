@@ -24,4 +24,6 @@ export interface ButtonProps {
   children?: ReactNode;
   type?: ButtonType;
   rounded?: boolean;
+  full?: boolean;
+  pad?: boolean;
 }

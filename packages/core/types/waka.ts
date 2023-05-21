@@ -64,6 +64,7 @@ export interface WakaMemberPostPayload {
   name: string;
   organization: WakaOrganization;
   apiKey: string;
+  githubName: string;
 }
 
 export interface WakaMemberAPIKeyUpdatePayload {

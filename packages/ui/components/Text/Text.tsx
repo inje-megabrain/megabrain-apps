@@ -7,6 +7,7 @@ import { MegabrainUIErrorTag, MegabrainUIError } from '@megabrain/ui/types';
 export const Text = forwardRef<HTMLElement, TextProps>(
   (
     {
+      full,
       css,
       tag = 'span',
       type = 'inherit',
@@ -32,6 +33,7 @@ export const Text = forwardRef<HTMLElement, TextProps>(
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         ref={ref as any}
         css={css}
+        full={full}
         type={type}
         display={display}
         align={align}
