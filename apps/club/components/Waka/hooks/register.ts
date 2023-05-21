@@ -1,7 +1,7 @@
 import { useReducer } from 'react';
-import { WakaOrganization } from '~/../../packages/core';
+import { WakaDepartment, WakaMemberPostPayload, WakaOrganization } from '@megabrain/core';
 
-export interface WakaMemberRegisterState {
+export interface WakaMemberRegisterState extends WakaMemberPostPayload {
   organization: WakaOrganization;
   name: string;
   githubName: string;
@@ -13,6 +13,7 @@ const INITIAL_STATE: WakaMemberRegisterState = {
   name: '',
   githubName: '',
   apiKey: '',
+  department: WakaDepartment.Frontend,
 };
 
 export const useWakaMemberRegister = () => {

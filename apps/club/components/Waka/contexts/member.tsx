@@ -37,7 +37,7 @@ export const reducer = (
 // ! 항상 내림차순으로 정렬합니다.
 export const postProcess = (val: WakaMemberValueContext): WakaMemberValueContext => {
   const period = val.period;
-  val.members.sort((lhs, rhs) => rhs[period]!.during - lhs[period]!.during);
+  val.members.sort((lhs, rhs) => rhs[period]! - lhs[period]!);
   val.limit = WakaTimeLimit[period];
   return val;
 };

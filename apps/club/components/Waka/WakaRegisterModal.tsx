@@ -1,5 +1,10 @@
 import { Button, Container, Flex, Logo, Modal, Text } from '@megabrain/ui';
-import { WakaOrganization, postWakaMember } from '@megabrain/core';
+import {
+  WakaDepartment,
+  WakaOrganization,
+  postWakaMember,
+  updateWakaMemberTime,
+} from '@megabrain/core';
 import { WakaMemberRegisterState, useWakaMemberRegister } from './hooks/register';
 import { registerContainerStyle } from './WakaRegisterModal.style';
 import { ChangeEventHandler } from 'react';
@@ -12,30 +17,27 @@ interface WakaRegisterModal {
 export const WakaRegisterModal: React.FC<WakaRegisterModal> = ({ open, close }) => {
   const [state, dispatch] = useWakaMemberRegister();
 
-  const handleOrganizationChange: ChangeEventHandler<HTMLSelectElement> = ({ target }) =>
-    dispatch({ organization: target.value as WakaOrganization });
-
   const handleConfirm = () => {
     if (!validateWakaRegister(state) || !confirm('정말로 등록하시겠습니까?')) {
       return;
     }
-    postWakaMember({
-      githubName: state.githubName,
-      name: state.name,
-      apiKey: state.apiKey,
-      organization: state.organization,
-    }).then(() => {
+    postWakaMember(state).then(() => {
       alert('등록이 완료되었습니다.');
+      updateWakaMemberTime(7);
       close();
     });
   };
 
+  const handleOrganizationChange: ChangeEventHandler<HTMLSelectElement> = ({ target }) =>
+    dispatch({ organization: target.value as WakaOrganization });
   const handleNameChange: ChangeEventHandler<HTMLInputElement> = ({ target }) =>
     dispatch({ name: target.value });
   const handleGithubNameChange: ChangeEventHandler<HTMLInputElement> = ({ target }) =>
     dispatch({ githubName: target.value });
   const handleAPIChange: ChangeEventHandler<HTMLInputElement> = ({ target }) =>
     dispatch({ apiKey: target.value });
+  const handleDepartmentChange: ChangeEventHandler<HTMLSelectElement> = ({ target }) =>
+    dispatch({ department: target.value as WakaDepartment });
 
   return (
     <Modal
@@ -70,6 +72,10 @@ export const WakaRegisterModal: React.FC<WakaRegisterModal> = ({ open, close }) 
         <select onChange={handleOrganizationChange}>
           <option value={WakaOrganization.Megabrain}>메가브레인</option>
           <option value={WakaOrganization.Dotgabi}>돗가비</option>
+        </select>
+        <select onChange={handleDepartmentChange}>
+          <option value={WakaDepartment.Frontend}>Frontend</option>
+          <option value={WakaDepartment.Backend}>Backend</option>
         </select>
         <input
           value={state.apiKey}
