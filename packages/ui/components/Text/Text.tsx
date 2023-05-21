@@ -11,7 +11,7 @@ export const Text = forwardRef<HTMLElement, TextProps>(
       css,
       tag = 'span',
       type = 'inherit',
-      display = 'inline',
+      display,
       weight = 'normal',
       align = 'left',
       ellipsis = false,
