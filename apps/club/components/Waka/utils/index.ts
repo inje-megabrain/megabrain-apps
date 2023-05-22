@@ -1,5 +1,7 @@
 import { WakaMember, WakaPeriod, WakaUnit } from '@megabrain/core';
 
+export * from './chart';
+
 export const randomImageUrl = (seed: string) =>
   `https://api.dicebear.com/6.x/lorelei/svg?seed=${seed}`;
 

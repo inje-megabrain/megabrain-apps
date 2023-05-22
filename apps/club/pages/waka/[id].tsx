@@ -2,16 +2,25 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import { WakaMemberDetail, backend } from '@megabrain/core';
 import { WAKA_REVALIDATE_SECOND } from '~/constants/isr';
 import { Container } from '@megabrain/ui';
+import { WakaDetail } from '~/components';
 
 interface WakaMemberPageProps extends WakaMemberDetail {}
 
 export const WakaMemberPage: React.FC<WakaMemberPageProps> = ({
   name,
-  // editors,
-  // projects,
+  editors,
+  projects,
   // languages,
 }) => {
-  return <Container>{name}</Container>;
+  return (
+    <Container layoutCenter>
+      {name}
+      <WakaDetail.DataOS
+        projects={projects}
+        editors={editors}
+      />
+    </Container>
+  );
 };
 
 export default WakaMemberPage;
