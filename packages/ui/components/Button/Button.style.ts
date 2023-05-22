@@ -28,6 +28,11 @@ export const BaseButton = styled('button', {
   },
 
   variants: {
+    m: {
+      true: {
+        margin: '3px',
+      },
+    },
     full: {
       true: {
         width: '100%',

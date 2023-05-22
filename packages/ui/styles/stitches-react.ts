@@ -32,6 +32,7 @@ export const { styled, css, getCssText, createTheme, globalCss, config, keyframe
         'accent-r': '#F45050',
         'on-accent-r': '#ffffff',
         'modal-background': 'rgba(0, 0, 0, 0.5)',
+        'input-background': '#fafafa',
 
         // background
         background: '#F0F0F0',
@@ -51,6 +52,8 @@ export const globalStyles = globalCss({
     position: 'fixed',
     top: 0,
     left: 0,
+    // width: '100%',
+    // height: '100%',
   },
 });
 

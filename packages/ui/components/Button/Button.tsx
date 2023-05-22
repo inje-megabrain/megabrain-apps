@@ -17,11 +17,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       iconOnly,
       onClick,
       rounded = true,
+      m,
     },
     ref
   ) => {
     return (
       <BaseButton
+        m={m}
         role="button"
         ref={ref}
         type={type}

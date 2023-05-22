@@ -1,8 +1,8 @@
 import { styled } from '@megabrain/ui/styles';
 
 export const BaseModal = styled('div', {
-  width: '100vw',
-  height: '100vh',
+  width: '100%',
+  height: '100%',
   background: '$modal-background',
   display: 'none',
   position: 'fixed',
