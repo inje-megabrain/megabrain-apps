@@ -14,7 +14,11 @@ const ScheduleCalendar: React.FC<CalendarProps> = ({ scheduleData, onChange }) =
       onActiveStartDateChange={({ activeStartDate }) => onChange(activeStartDate as Date)}
       tileContent={({ date }) =>
         scheduleData.map((event) =>
-          new Date(event.startDate).getDate() === date.getDate() ? (
+          new Date(event.startDate).getMonth() == date.getMonth() &&
+          new Date(event.endDate).getMonth() == date.getMonth() &&
+          new Date(event.endDate).getDate() - new Date(event.startDate).getDate() >= 0 &&
+          new Date(event.startDate).getDate() <= date.getDate() &&
+          date.getDate() <= new Date(event.endDate).getDate() ? (
             <div key={event.id}>{event.title}</div>
           ) : null
         )

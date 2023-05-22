@@ -36,27 +36,36 @@ const Schedule: React.FC<ScheduleDataProps> = ({ scheduleData }) => {
         menuItems={globalMenu}
         onHrefClick={(href) => router.push(href)}
       />
-      <Text type={'primary'}>Schedule</Text>
       <Container pad>
-        <ScheduleCalendar
-          scheduleData={changeableData}
-          onChange={setMonthYear}
-        />
-        <Container
-          pad
-          display={'inline-block'}
+        <Text
+          css={{
+            fontSize: '2rem',
+          }}
         >
-          {changeableData.map((data) => {
-            return (
-              <div key={data.id}>
-                <h3>{data.title}</h3>
-                <p>
-                  from {new Date(data.startDate).getDate()} until {new Date(data.endDate).getDate()}
-                </p>
-                <h5>assign to {data.assignPeople}</h5>
-              </div>
-            );
-          })}
+          Schedule
+        </Text>
+        <Container>
+          <ScheduleCalendar
+            scheduleData={changeableData}
+            onChange={setMonthYear}
+          />
+          <Container
+            pad
+            display={'inline-block'}
+          >
+            {changeableData.map((data) => {
+              return (
+                <div key={data.id}>
+                  <h3>{data.title}</h3>
+                  <p>
+                    from {new Date(data.startDate).getDate()} until{' '}
+                    {new Date(data.endDate).getDate()}
+                  </p>
+                  <h5>assign to {data.assignPeople}</h5>
+                </div>
+              );
+            })}
+          </Container>
         </Container>
       </Container>
       <Footer />
