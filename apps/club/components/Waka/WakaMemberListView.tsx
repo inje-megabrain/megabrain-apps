@@ -1,4 +1,4 @@
-import { Flex, List, ListProps } from '@megabrain/ui';
+import { Flex, List, ListProps, Text } from '@megabrain/ui';
 import { WakaMember, WakaPeriod } from '@megabrain/core';
 
 import { memberKey } from './utils';
@@ -69,7 +69,7 @@ const WakaMemberListItem: ListProps<WakaMember, WakaMemberListViewAdditionalProp
                 marginBottom: 3,
               }}
             />
-            {item.name}
+            <Text>{item.name}</Text>
           </Flex>
           <Flex
             display={{

@@ -12,7 +12,7 @@ export const informationStyle = {
 export const progressWrapperStyle = {
   // marginTop: 10,
   '@mobile': {
-    width: '275px',
+    width: '270px',
     margin: '0 auto',
   },
 };

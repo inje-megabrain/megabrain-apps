@@ -24,6 +24,9 @@ const Waka: React.FC<WakaProps> = ({ members }) => {
         <Button
           pad
           type="contained"
+          css={{
+            marginBottom: '20px',
+          }}
           onClick={handleRegisterModalOpen}
         >
           등록

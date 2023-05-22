@@ -123,13 +123,13 @@ export const BaseContainer = styled('div', {
     },
     layoutCenter: {
       true: {
-        width: 975,
+        width: 920,
         margin: '0px auto',
         '@tablet': {
-          width: 620,
+          width: 600,
         },
         '@mobile': {
-          width: 580,
+          width: 300,
         },
       },
     },
