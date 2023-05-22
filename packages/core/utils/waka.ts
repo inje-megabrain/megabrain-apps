@@ -1,10 +1,25 @@
 import {
   WakaDepartment,
   WakaMember,
+  WakaMemberDetailResponse,
   WakaMemberResponse,
   WakaOrganization,
   WakaPeriod,
+  WakaMemberDetail,
+  WakaRawUnit,
+  WakaUnit,
 } from '../types';
+
+export const transformRawIntoWakaMemberDetail = (
+  raw: WakaMemberDetailResponse
+): WakaMemberDetail => {
+  return {
+    name: raw.name,
+    editors: raw.editors.map(parseWakaUnit),
+    languages: raw.languages.map(parseWakaUnit),
+    projects: raw.proejects.map(parseWakaUnit),
+  };
+};
 
 export const transformRawIntoWakaMember = (raw: WakaMemberResponse): WakaMember => {
   return {
@@ -20,9 +35,9 @@ export const transformRawIntoWakaMember = (raw: WakaMemberResponse): WakaMember 
     [WakaPeriod.Thirty]: parseWakaStringTime(raw.thirtyDays),
   };
 };
-const wakaStringTimeRegx = /(\d+) hrs (\d+) mins/;
+const wakaStringTimeRegex = /(\d+) hrs (\d+) mins/;
 const parseWakaStringTime = (time: string): number => {
-  const matches = wakaStringTimeRegx.exec(time);
+  const matches = wakaStringTimeRegex.exec(time);
   if (matches) {
     return parseInt(matches[1]) * 60 + parseInt(matches[2]);
   } else {
@@ -30,20 +45,20 @@ const parseWakaStringTime = (time: string): number => {
   }
 };
 const parseWakaMoney = (raw: WakaMemberResponse['money']) => raw.amount;
-// const wakaUnitTimeRegx = /(\d+):(\d+)/;
-// const parseWakUnit = (u: WakaRawUnit): WakaUnit => {
-//   let minutes = 0;
+const wakaUnitTimeRegex = /(\d+):(\d+)/;
+const parseWakaUnit = (u: WakaRawUnit): WakaUnit => {
+  let minutes = 0;
 
-//   const matches = wakaUnitTimeRegx.exec(u.time);
-//   if (matches) {
-//     minutes = parseInt(matches[0]) * 60 + parseInt(matches[1]);
-//   }
-//   return {
-//     id: u.id,
-//     name: u.name,
-//     time: minutes,
-//   };
-// };
+  const matches = wakaUnitTimeRegex.exec(u.time);
+  if (matches) {
+    minutes = parseInt(matches[1]) * 60 + parseInt(matches[2]);
+  }
+  return {
+    id: u.id,
+    name: u.name,
+    time: minutes,
+  };
+};
 
 export const wakaNumberToTime = (val: number) => {
   return {

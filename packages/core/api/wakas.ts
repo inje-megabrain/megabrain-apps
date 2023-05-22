@@ -1,5 +1,11 @@
-import { WakaMemberAPIKeyUpdatePayload, WakaMemberPostPayload, WakaMemberResponse } from '../types';
-import { transformRawIntoWakaMember } from '../utils/waka';
+import {
+  WakaMemberAPIKeyUpdatePayload,
+  WakaMemberDetailGetPayload,
+  WakaMemberDetailResponse,
+  WakaMemberPostPayload,
+  WakaMemberResponse,
+} from '../types';
+import { transformRawIntoWakaMember, transformRawIntoWakaMemberDetail } from '../utils/waka';
 import { createEndpoint, transformEndpoint } from './base';
 
 export const getWakaMembers = transformEndpoint(
@@ -9,6 +15,14 @@ export const getWakaMembers = transformEndpoint(
     },
   }),
   (raw) => raw.map(transformRawIntoWakaMember)
+);
+
+export const getWakaMemberDetail = transformEndpoint(
+  createEndpoint<WakaMemberDetailResponse, WakaMemberDetailGetPayload>(
+    'GET',
+    ({ id, date }) => `${global.core.WAKA_BASE_URL}/members/${id}?date=${date}`
+  ),
+  transformRawIntoWakaMemberDetail
 );
 
 export const postWakaMember = createEndpoint<void, WakaMemberPostPayload>(
@@ -40,6 +54,7 @@ const wakas = {
   postMember: postWakaMember,
   deleteMember: deleteWakaMember,
   updateTime: updateWakaMemberTime,
+  detail: getWakaMemberDetail,
 };
 
 export default wakas;

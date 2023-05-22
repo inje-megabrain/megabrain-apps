@@ -12,6 +12,20 @@ export interface WakaMemberResponse {
   startDate: string;
 }
 
+export interface WakaMemberDetailResponse {
+  name: string;
+  editors: WakaRawUnit[];
+  proejects: WakaRawUnit[];
+  languages: WakaRawUnit[];
+}
+
+export interface WakaMemberDetail {
+  name: string;
+  editors: WakaUnit[];
+  projects: WakaUnit[];
+  languages: WakaUnit[];
+}
+
 export interface WakaRawUnit {
   id: number;
   name: string;
@@ -77,4 +91,8 @@ export interface WakaMemberPostPayload {
 export interface WakaMemberAPIKeyUpdatePayload {
   id: string;
   apiKey: string;
+}
+export interface WakaMemberDetailGetPayload {
+  id: string;
+  date: 7 | 30;
 }
