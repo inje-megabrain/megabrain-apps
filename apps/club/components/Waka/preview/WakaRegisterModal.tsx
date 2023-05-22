@@ -5,7 +5,7 @@ import {
   postWakaMember,
   updateWakaMemberTime,
 } from '@megabrain/core';
-import { WakaMemberRegisterState, useWakaMemberRegister } from './hooks/register';
+import { WakaMemberRegisterState, useWakaMemberRegister } from '../hooks/register';
 import { registerContainerStyle } from './WakaRegisterModal.style';
 import { ChangeEventHandler } from 'react';
 

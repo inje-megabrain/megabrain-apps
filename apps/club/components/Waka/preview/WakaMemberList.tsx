@@ -1,7 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { WakaMember } from '@megabrain/core';
 
-import { useWakaMemberDispatch, useWakaMemberValue } from './contexts/member';
+import { useWakaMemberDispatch, useWakaMemberValue } from '../contexts/member';
 import { WakaMemberListView, WakaMemberListViewAdditionalProps } from './WakaMemberListView';
 
 interface WakaMemberListProps {

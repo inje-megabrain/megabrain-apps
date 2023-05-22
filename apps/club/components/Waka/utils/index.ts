@@ -1,4 +1,4 @@
-import { WakaMember, WakaPeriod } from '@megabrain/core';
+import { WakaMember, WakaPeriod, WakaUnit } from '@megabrain/core';
 
 export const randomImageUrl = (seed: string) =>
   `https://api.dicebear.com/6.x/lorelei/svg?seed=${seed}`;
@@ -30,3 +30,9 @@ const ProgressColorScheme = [
 
 export const getProgressBarColor = (index: number) =>
   ProgressColorScheme[index % ProgressColorScheme.length];
+
+export const memberDetailUrl = (member: WakaMember) => `/waka/${member.id}`;
+
+export const filterWakUnit = (units: WakaUnit[], minAmount: number) =>
+  units.filter((u) => u.time >= minAmount);
+export const sumOfWakaUnits = (units: WakaUnit[]) => units.reduce((acc, u) => acc + u.time, 0);

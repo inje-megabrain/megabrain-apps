@@ -4,7 +4,7 @@ import { Flex, ProgressBar, Text, CSS } from '@megabrain/ui';
 
 import { progressIndicatorStyle, trackBarStyle } from './WakaTimeProgressBar.style';
 import { calcPercentage } from '~/utils';
-import { getProgressBarColor } from './utils';
+import { getProgressBarColor } from '../utils';
 
 interface WakaTimeProgressBarProps {
   time: number;

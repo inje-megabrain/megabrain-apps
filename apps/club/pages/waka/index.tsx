@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 import { WakaMember, WakaPeriod, backend } from '@megabrain/core';
 import { WAKA_REVALIDATE_SECOND } from '~/constants/isr';
-import WakaComposite from '~/components/Waka';
+import { WakaPreview } from '~/components/Waka';
 import { useState } from 'react';
 import { Button, Container, Text } from '@megabrain/ui';
 
@@ -32,21 +32,21 @@ const Waka: React.FC<WakaProps> = ({ members }) => {
           등록
         </Button>
       </Container>
-      <WakaComposite>
-        <WakaComposite.MemberList members={members} />
-      </WakaComposite>
+      <WakaPreview>
+        <WakaPreview.MemberList members={members} />
+      </WakaPreview>
       <Text
         tag="h1"
         align="center"
       >
         근무시간 미달자
       </Text>
-      <WakaComposite.PureList
+      <WakaPreview.PureList
         members={members.filter((m) => m[WakaPeriod.Seven] < TIME_UNDER_BOUNDARY.limit)}
         additional={TIME_UNDER_BOUNDARY}
       />
       {registerVisible && (
-        <WakaComposite.RegisterModal
+        <WakaPreview.RegisterModal
           open={registerVisible}
           close={handleRegisterModalClose}
         />
