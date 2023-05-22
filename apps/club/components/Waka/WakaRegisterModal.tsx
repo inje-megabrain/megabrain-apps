@@ -82,7 +82,13 @@ export const WakaRegisterModal: React.FC<WakaRegisterModal> = ({ open, close }) 
           placeholder="Wakatime API KEY"
           onChange={handleAPIChange}
         />
-        <a href="https://wakatime.com/settings/account">API Key...</a>
+        <a
+          rel="noreferrer"
+          href="https://wakatime.com/settings/account"
+          target="_blank"
+        >
+          API Key...
+        </a>
 
         <Flex
           direction={{
