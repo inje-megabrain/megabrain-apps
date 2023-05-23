@@ -40,12 +40,15 @@ export const updateWakaMemberAPIKey = createEndpoint<void, WakaMemberAPIKeyUpdat
 
 export const deleteWakaMember = createEndpoint(
   'DELETE',
-  (id: string) => `${global.core.WAKA_BASE_URL}/waka/members/${id}`
+  (id: string) => `${global.core.WAKA_BASE_URL}/members/${id}`
 );
 
 export const updateWakaMemberTime = createEndpoint(
   'POST',
-  (range: 1 | 7 | 14 | 30) => `${global.core.WAKA_BASE_URL}/waka/members?date=${range}`
+  (range: 1 | 7 | 14 | 30) => `${global.core.WAKA_BASE_URL}/members?date=${range}`,
+  {
+    successOnly: true,
+  }
 );
 
 const wakas = {

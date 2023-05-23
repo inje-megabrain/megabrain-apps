@@ -59,7 +59,7 @@ export const getStaticProps: GetStaticProps<WakaProps> = async () => {
   try {
     await backend.wakas.updateTime(7);
   } catch {
-    console.log('pass error');
+    console.log('ISR API ERROR');
   }
   const members = await backend.wakas.members();
   return {
