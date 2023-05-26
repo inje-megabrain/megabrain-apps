@@ -28,7 +28,7 @@ export const getWakaMemberDetail = transformEndpoint(
 export const postWakaMember = createEndpoint<void, WakaMemberPostPayload>(
   'POST',
   ({ organization, name, apiKey, githubName, department }) =>
-    `${global.core.WAKA_BASE_URL}/${name}?organization=${organization}&apiKey=${apiKey}&github_Id=${githubName}&department=${department}`,
+    `${global.core.WAKA_BASE_URL}/${githubName}?organization=${organization}&apiKey=${apiKey}&name=${name}&department=${department}`,
   { mirror: true, successOnly: true }
 );
 

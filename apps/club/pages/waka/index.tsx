@@ -61,6 +61,7 @@ export const getStaticProps: GetStaticProps<WakaProps> = async () => {
   } catch {
     console.log('ISR API ERROR');
   }
+
   const members = await backend.wakas.members();
   return {
     props: {

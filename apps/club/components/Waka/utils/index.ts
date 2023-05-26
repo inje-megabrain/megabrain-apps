@@ -1,4 +1,5 @@
 import { WakaMember, WakaPeriod, WakaUnit } from '@megabrain/core';
+import { WakaMemberRank } from '../types';
 
 export * from './chart';
 
@@ -11,6 +12,24 @@ export const WakaTimeLimit = {
   [WakaPeriod.Seven]: 4200, // 70h
   [WakaPeriod.Fourteen]: 8400,
   [WakaPeriod.Thirty]: 12600,
+};
+
+// ! 반드시 내림차순 정렬된 배열을 넣으시오.
+export const getWakaRankingTop3 = (members: WakaMember[]): WakaMemberRank[] => {
+  return [
+    {
+      rank: 1,
+      ...members[0],
+    },
+    {
+      rank: 2,
+      ...members[2],
+    },
+    {
+      rank: 3,
+      ...members[3],
+    },
+  ];
 };
 
 const ProgressColorScheme = [
