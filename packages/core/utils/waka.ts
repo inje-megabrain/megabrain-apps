@@ -8,16 +8,26 @@ import {
   WakaMemberDetail,
   WakaRawUnit,
   WakaUnit,
+  WakaDaily,
+  WakaRawDailyUnit,
+  WakaDailyUnit,
 } from '../types';
 
-export const transformRawIntoWakaMemberDetail = (
-  raw: WakaMemberDetailResponse
-): WakaMemberDetail => {
+export const transformRawIntoWakaMemberDetail = ([
+  user,
+  stats,
+]: WakaMemberDetailResponse): WakaMemberDetail => {
   return {
-    name: raw.name,
-    editors: raw.editors.map(parseWakaUnit),
-    languages: raw.languages.map(parseWakaUnit),
-    projects: raw.proejects.map(parseWakaUnit),
+    name: user.name,
+    organization: user.oranization as WakaOrganization,
+    money: user.money.amount,
+    lastDeposit: new Date(user.money.updateDate).valueOf(),
+    githubId: parseGithubId(user.imageURL),
+    imageUrl: user.imageURL,
+    editors: user.totalEditors.map(parseWakaUnit),
+    projects: user.totalProejects.map(parseWakaUnit),
+    languages: user.totalLanguages.map(parseWakaUnit),
+    days: parseWakaDaily(stats),
   };
 };
 
@@ -44,6 +54,26 @@ const parseWakaStringTime = (time: string): number => {
     return 0;
   }
 };
+const parseGithubId = (url: string): string => url.slice(url.lastIndexOf('/') + 1);
+const parseWakaDaily = (stats: WakaMemberDetailResponse['1']): WakaMemberDetail['days'] =>
+  Object.keys(stats).reduce<WakaDaily[]>((acc, k) => {
+    const v = stats[k];
+    acc.push({
+      date: new Date(k).valueOf(),
+      editor: v.summariesEditors.map(parseWakaDailyUnit),
+      language: v.summariesLanguages.map(parseWakaDailyUnit),
+      project: v.summariesProjects.map(parseWakaDailyUnit),
+    } satisfies WakaDaily);
+
+    return acc;
+  }, []);
+
+const parseWakaDailyUnit = (u: WakaRawDailyUnit): WakaDailyUnit => ({
+  name: u.name,
+  percents: u.percent,
+  minutes: u.hours * 60 + u.minutes,
+});
+
 const parseWakaMoney = (raw: WakaMemberResponse['money']) => raw.amount;
 const wakaUnitTimeRegex = /(\d+):(\d+)/;
 const parseWakaUnit = (u: WakaRawUnit): WakaUnit => {

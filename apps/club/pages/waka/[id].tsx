@@ -29,8 +29,9 @@ export const getStaticProps: GetStaticProps<WakaMemberPageProps> = async (ctx) =
   const memberId = ctx.params?.id as string;
   const detail = await backend.wakas.detail({
     id: memberId,
-    date: 30,
+    date: 7,
   });
+  console.log(detail);
   return {
     props: detail,
     revalidate: WAKA_REVALIDATE_SECOND,
