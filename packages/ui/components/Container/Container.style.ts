@@ -3,13 +3,24 @@ import { styled } from '@megabrain/ui/styles';
 export const BaseContainer = styled('div', {
   display: 'block',
   background: 'transparent',
+  boxSizing: 'border-box',
   variants: {
+    shadow: {
+      true: {
+        boxShadow: '0px 0px 7px rgba(0,0,0,0.1)',
+      },
+    },
+    border: {
+      true: {
+        border: '1px solid #f7f7f8',
+      },
+    },
     background: {
       true: {
         background: '$background',
       },
     },
-    border: {
+    radius: {
       true: {
         borderRadius: '8px',
       },
@@ -129,7 +140,7 @@ export const BaseContainer = styled('div', {
           width: 600,
         },
         '@mobile': {
-          width: 300,
+          width: 380,
         },
       },
     },

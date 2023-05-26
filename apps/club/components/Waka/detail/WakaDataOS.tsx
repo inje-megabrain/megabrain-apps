@@ -17,20 +17,29 @@ interface WakaDataOSProps {
 export const WakaDataOS: React.FC<WakaDataOSProps> = ({ projects, editors }) => {
   const projectSeries = useMemo(() => {
     const items = filterWakUnit(projects, 60).sort((lhs, rhs) => rhs.time - lhs.time);
-    return wakaUnitToKeyValueSeries(items.length > 10 ? items.slice(0, 10) : items);
+    return wakaUnitToKeyValueSeries(items.slice(0, 5));
   }, [projects]);
 
   return (
-    <Flex flow>
+    <Flex
+      flow
+      css={{
+        '@tablet': {
+          rowGap: 20,
+          flexDirection: 'column',
+        },
+      }}
+    >
       <Container flow>
         <Text
           tag="p"
           align="center"
         >
-          주로 사용하는 에디터는 무엇인가요?
+          사용하는 에디터는 무엇인가요?
         </Text>
         <ApexChart
           height={300}
+          width={380}
           type="pie"
           series={wakaUnitToValueSeries(editors)}
           options={pieChartOption(editors)}
@@ -41,10 +50,11 @@ export const WakaDataOS: React.FC<WakaDataOSProps> = ({ projects, editors }) => 
           tag="p"
           align="center"
         >
-          현재 작업하는 프로젝트는 무엇인가요?
+          주로 작업하는 프로젝트는 무엇인가요?
         </Text>
         <ApexChart
-          height={300}
+          height={280}
+          width={380}
           type="bar"
           series={projectSeries}
           options={PROJECT_CHART_OPTION}

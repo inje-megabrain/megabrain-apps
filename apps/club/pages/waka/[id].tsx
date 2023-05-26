@@ -1,23 +1,41 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { WakaMemberDetail, backend } from '@megabrain/core';
+import { GithubUser, WakaMemberDetail, backend } from '@megabrain/core';
 import { WAKA_REVALIDATE_SECOND } from '~/constants/isr';
 import { Container } from '@megabrain/ui';
 import { WakaDetail } from '~/components';
+import { sortWakaDetail } from '~/components/Waka/utils';
 
-interface WakaMemberPageProps extends WakaMemberDetail {}
+interface WakaMemberPageProps {
+  detail: WakaMemberDetail;
+  githubUser: GithubUser;
+}
 
 export const WakaMemberPage: React.FC<WakaMemberPageProps> = ({
-  name,
-  editors,
-  projects,
+  detail,
+  githubUser,
   // languages,
 }) => {
   return (
-    <Container layoutCenter>
-      {name}
+    <Container
+      layoutCenter
+      css={{
+        paddingBottom: '100px',
+      }}
+    >
+      <Container
+        css={{
+          marginBottom: 40,
+        }}
+      >
+        <WakaDetail.Statusbar
+          data={detail}
+          githubUser={githubUser}
+        />
+      </Container>
+      <WakaDetail.TotalDaily detail={detail} />
       <WakaDetail.DataOS
-        projects={projects}
-        editors={editors}
+        projects={detail.projects}
+        editors={detail.editors}
       />
     </Container>
   );
@@ -31,9 +49,12 @@ export const getStaticProps: GetStaticProps<WakaMemberPageProps> = async (ctx) =
     id: memberId,
     date: 7,
   });
-  console.log(detail);
+  const githubUser = await backend.githubs.user(detail.githubId);
   return {
-    props: detail,
+    props: {
+      githubUser,
+      detail: sortWakaDetail(detail),
+    },
     revalidate: WAKA_REVALIDATE_SECOND,
   };
 };

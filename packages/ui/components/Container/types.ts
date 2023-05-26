@@ -25,6 +25,7 @@ export interface ContainerProps extends VariantProps<typeof BaseContainer> {
   layoutCenter?: boolean;
   gravity?: Direction;
   flow?: boolean;
+  radius?: boolean;
 }
 
 // type FlexJustify = 'end' | 'start' | 'between' | 'evenly' | 'around' | 'center' | 'left' | 'right';
@@ -38,6 +39,7 @@ export interface FlexProps extends ContainerProps, VariantProps<typeof BaseFlex>
   // justify?: FlexJustify;
   // items?: FlexAlignItems;
   // direction?: VariantProps<typeof BaseFlex>['direction'];
+  shadow?: boolean;
 }
 
 export interface GridProps extends ContainerProps, VariantProps<typeof BaseGrid> {}

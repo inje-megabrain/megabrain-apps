@@ -1,6 +1,5 @@
-import { createStitches, CSS as StitchesCSS } from '@stitches/react';
-
-export * from '@stitches/react';
+import { createStitches, CSS as StitchesCSS, VariantProps } from '@stitches/react';
+import { BaseHTMLAttributes } from 'react';
 
 const MODAL_ROOT_SELECTOR = `#modal-root`;
 export const MODAL_ROOT_ID = MODAL_ROOT_SELECTOR.slice(1);
@@ -71,7 +70,11 @@ export const darkTheme = createTheme('dark', {
   },
 });
 
-export type CSS = StitchesCSS<typeof config>;
+type CSS = StitchesCSS<typeof config>;
+
+type CSSWithElement<T> = CSS & BaseHTMLAttributes<T>;
+
+export type { VariantProps, CSS, CSSWithElement };
 
 // Hex To RGB
 export const h2r = (hex: string) =>

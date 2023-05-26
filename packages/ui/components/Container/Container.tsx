@@ -13,11 +13,13 @@ export const Container = forwardRef<HTMLDivElement, ContainerProps>(
       overflow,
       layoutCenter,
       gravity,
+      radius,
       border,
       css,
       children,
       full,
       flow,
+      shadow,
       onClick,
     },
     ref
@@ -29,6 +31,7 @@ export const Container = forwardRef<HTMLDivElement, ContainerProps>(
         display={display}
         pad={pad}
         onClick={onClick}
+        shadow={shadow}
         css={css}
         overflow={overflow}
         full={full}
@@ -38,6 +41,7 @@ export const Container = forwardRef<HTMLDivElement, ContainerProps>(
         background={background}
         border={border}
         modal={modal}
+        radius={radius}
       >
         {children}
       </BaseContainer>

@@ -3,7 +3,7 @@ import { WakaMember, WakaPeriod } from '@megabrain/core';
 
 import { memberDetailUrl, memberKey } from '../utils';
 import { progressWrapperStyle, informationStyle, listContainerStyle } from './WakaMemberList.style';
-import { WakaTimeText } from './WakaTimeText';
+import { WakaTimeText } from '../WakaTimeText';
 import { WakaSalaryText } from './WakSalaryText';
 import { WakaTimeProgressBar } from './WakaTimeProgressBar';
 import Link from 'next/link';

@@ -1,4 +1,7 @@
-import { WakaUnit, wakaNumberToTime } from '@megabrain/core';
+import { WakaDaily, WakaUnit, wakaNumberToTime } from '@megabrain/core';
+import { sumOfWakaDailyUnits } from '.';
+
+export const DAY_OF_WEEK = ['일', '월', '화', '수', '목', '금', '토'] as const;
 
 export const wakaUnitToKeyValueSeries = (units: WakaUnit[]) => [
   {
@@ -6,8 +9,12 @@ export const wakaUnitToKeyValueSeries = (units: WakaUnit[]) => [
   },
 ];
 
+export const wakaDayToValueSeries = (days: WakaDaily[]) =>
+  days.map((v) => sumOfWakaDailyUnits(v.editor));
 export const wakaUnitToValueSeries = (units: WakaUnit[]) => units.map((u) => u.time);
 export const wakaUnitToLabels = (units: WakaUnit[]) => units.map((u) => u.name);
+export const wakaDailyUnitsToLabels = (units: WakaDaily[]) =>
+  units.map((u) => DAY_OF_WEEK[new Date(u.date).getDay()]);
 
 export const PROJECT_CHART_OPTION: ApexCharts.ApexOptions = {
   chart: {
@@ -94,5 +101,29 @@ export const pieChartOption = (units: WakaUnit[]): ApexCharts.ApexOptions => ({
   labels: wakaUnitToLabels(units),
   legend: {
     position: 'bottom',
+  },
+  tooltip: {
+    y: {
+      formatter(val) {
+        const time = wakaNumberToTime(val);
+        return ` ${time.hour}시간 ${time.minute}분`;
+      },
+    },
+  },
+});
+
+export const donutChartOption = (units: WakaDaily[]): ApexCharts.ApexOptions => ({
+  labels: wakaDailyUnitsToLabels(units),
+  colors: ['#90ee7e', '#f48024', '#69d2e7', '#33b2df', '#546E7A', '#d4526e', '#13d8aa'],
+  legend: {
+    position: 'right',
+  },
+  tooltip: {
+    y: {
+      formatter(val) {
+        const time = wakaNumberToTime(val);
+        return ` ${time.hour}시간 ${time.minute}분`;
+      },
+    },
   },
 });
