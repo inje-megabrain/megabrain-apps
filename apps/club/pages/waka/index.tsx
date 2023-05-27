@@ -12,9 +12,12 @@ const TIME_UNDER_BOUNDARY = {
 
 interface WakaProps {
   members: WakaMember[];
+  lastUpdate: number;
 }
 
-const Waka: React.FC<WakaProps> = ({ members }) => {
+const kor = Intl.DateTimeFormat('ko', { dateStyle: 'long', timeStyle: 'short' });
+
+const Waka: React.FC<WakaProps> = ({ members, lastUpdate }) => {
   const [registerVisible, setRegisterVisible] = useState(false);
   const handleRegisterModalOpen = () => setRegisterVisible(true);
   const handleRegisterModalClose = () => setRegisterVisible(false);
@@ -32,6 +35,12 @@ const Waka: React.FC<WakaProps> = ({ members }) => {
           등록
         </Button>
       </Container>
+      <Text
+        tag="p"
+        align="center"
+      >
+        마지막 업데이트 {kor.format(lastUpdate)}
+      </Text>
       <WakaPreview>
         <WakaPreview.MemberList members={members} />
       </WakaPreview>
@@ -66,6 +75,7 @@ export const getStaticProps: GetStaticProps<WakaProps> = async () => {
   return {
     props: {
       members,
+      lastUpdate: new Date().valueOf(),
     },
     revalidate: WAKA_REVALIDATE_SECOND,
   };

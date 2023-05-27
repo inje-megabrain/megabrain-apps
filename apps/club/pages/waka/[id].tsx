@@ -1,7 +1,7 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { GithubUser, WakaMemberDetail, backend } from '@megabrain/core';
 import { WAKA_REVALIDATE_SECOND } from '~/constants/isr';
-import { Container } from '@megabrain/ui';
+import { Container, Flex } from '@megabrain/ui';
 import { WakaDetail } from '~/components';
 import { sortWakaDetail } from '~/components/Waka/utils';
 
@@ -10,11 +10,7 @@ interface WakaMemberPageProps {
   githubUser: GithubUser;
 }
 
-export const WakaMemberPage: React.FC<WakaMemberPageProps> = ({
-  detail,
-  githubUser,
-  // languages,
-}) => {
+export const WakaMemberPage: React.FC<WakaMemberPageProps> = ({ detail, githubUser }) => {
   return (
     <Container
       layoutCenter
@@ -32,6 +28,21 @@ export const WakaMemberPage: React.FC<WakaMemberPageProps> = ({
           githubUser={githubUser}
         />
       </Container>
+      <Flex
+        justify="around"
+        items="center"
+        direction={{
+          '@tablet': 'col',
+        }}
+        css={{
+          marginBottom: 25,
+          '@tablet': {
+            rowGap: 15,
+          },
+        }}
+      >
+        <WakaDetail.Abstract detail={detail} />
+      </Flex>
       <WakaDetail.TotalDaily detail={detail} />
       <WakaDetail.Editor editors={detail.editors} />
       <WakaDetail.Project projects={detail.projects} />
