@@ -1,9 +1,11 @@
-import WakaDataOS from './WakaDataOS';
+import WakaProject from './WakaProject';
+import WakaEditor from './WakaEditor';
 import WakaStatusbar from './WakaStatusbar';
 import WakaTotalDaily from './WakaTotalDaily';
 
 export const WakaDetail = {
-  DataOS: WakaDataOS,
   Statusbar: WakaStatusbar,
   TotalDaily: WakaTotalDaily,
+  Project: WakaProject,
+  Editor: WakaEditor,
 };

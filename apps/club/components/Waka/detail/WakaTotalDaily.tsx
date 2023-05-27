@@ -2,6 +2,7 @@ import { WakaMemberDetail } from '@megabrain/core';
 import { Flex, Text } from '@megabrain/ui';
 import { ApexChart } from '~/libs/apex-chart';
 import { DAY_OF_WEEK, donutChartOption, wakaDayToValueSeries, wakaTimeStr } from '../utils';
+import { getMaxIndex } from '~/utils';
 
 interface WakaTotalDailyProps {
   detail: WakaMemberDetail;
@@ -12,7 +13,7 @@ export const WakaTotalDaily: React.FC<WakaTotalDailyProps> = ({ detail }) => {
 
   const series = wakaDayToValueSeries(sortedDays);
 
-  const maxTimeIdx = series.reduce((acc, d, i) => (series[acc] < d ? i : acc), 0);
+  const maxTimeIdx = getMaxIndex(series);
 
   return (
     <Flex

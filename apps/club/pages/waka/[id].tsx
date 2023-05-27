@@ -33,10 +33,8 @@ export const WakaMemberPage: React.FC<WakaMemberPageProps> = ({
         />
       </Container>
       <WakaDetail.TotalDaily detail={detail} />
-      <WakaDetail.DataOS
-        projects={detail.projects}
-        editors={detail.editors}
-      />
+      <WakaDetail.Editor editors={detail.editors} />
+      <WakaDetail.Project projects={detail.projects} />
     </Container>
   );
 };
