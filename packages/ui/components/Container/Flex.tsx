@@ -3,7 +3,7 @@ import { FlexProps } from './types';
 import { BaseFlex } from './Flex.style';
 
 export const Flex = forwardRef<HTMLDivElement, FlexProps>(
-  ({ items, justify, nowrap, flow, inline, direction = 'row', ...containerProps }, ref) => {
+  ({ items, justify, nowrap, shadow, flow, inline, direction = 'row', ...containerProps }, ref) => {
     return (
       <BaseFlex
         items={items}
@@ -12,6 +12,7 @@ export const Flex = forwardRef<HTMLDivElement, FlexProps>(
         flow={flow}
         inline={inline}
         ref={ref}
+        shadow={shadow}
         direction={direction}
         {...containerProps}
       />

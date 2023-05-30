@@ -1,5 +1,5 @@
 import { CSS } from '@megabrain/ui/styles';
-import { MouseEventHandler } from 'react';
+import { MouseEventHandler, ReactNode } from 'react';
 import { baseTextComponent } from './Text.styles';
 
 type TextType = 'primary' | 'secondary' | 'tertiary' | 'accent-r' | 'accent-y' | 'inherit';
@@ -14,7 +14,7 @@ export interface TextProps {
   full?: boolean;
   tag?: keyof typeof baseTextComponent;
   css?: CSS;
-  children: string; // Only String
+  children: ReactNode;
   onClick?: MouseEventHandler<HTMLElement>;
   ellipsis?: boolean;
   display?: TextDisplay;

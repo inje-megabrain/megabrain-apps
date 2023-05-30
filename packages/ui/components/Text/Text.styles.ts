@@ -5,6 +5,7 @@ export const baseTextCss = css({
 
   fontWeight: 'inherit',
   fontFamily: '$body',
+  margin: 0,
 
   variants: {
     //#region Color Type
@@ -40,6 +41,9 @@ export const baseTextCss = css({
       },
       inline: {
         display: 'inline',
+      },
+      none: {
+        display: 'none',
       },
     },
     //#endregion

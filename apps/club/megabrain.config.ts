@@ -4,7 +4,8 @@ import { defineConfig } from '@megabrain/core/config';
 defineConfig({
   core: {
     WAKA_BASE_URL: process.env.NEXT_PUBLIC_WAKA_API_ENDPOINT,
-    SCHEDULE_BASE_URL: process.env.NEXT_PUBLIC_SCHEDULE_API_ENDPOINT,
+    SCHEDULE_BASE_URL: process.env.NEXT_PUBLIC_API_ENDPOINT + '/schedules',
+    SERVERHEALTH_BASE_URL: process.env.NEXT_PUBLIC_API_ENDPOINT + '',
   },
   notion: {
     SECRET_KEY: process.env.NEXT_PUBLIC_NOTION_SECRET,

@@ -1,4 +1,11 @@
-html body {
-    margin: 0;
-    padding: 0;
+html,
+body,
+#__next {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }

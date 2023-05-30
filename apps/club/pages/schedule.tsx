@@ -7,6 +7,7 @@ import { backend } from '@megabrain/core';
 import { GetStaticProps } from 'next';
 import { ScheduleData } from '@megabrain/core/types/schedule';
 import { SCHEDULE_REVALIDATE_SECOND } from '~/constants/isr';
+import Seo from '~/components/Seo';
 
 interface ScheduleDataProps {
   scheduleData: ScheduleData[];
@@ -32,6 +33,7 @@ const Schedule: React.FC<ScheduleDataProps> = ({ scheduleData }) => {
   const router = useRouter();
   return (
     <>
+      <Seo templateTitle={'일정'} />
       <Header
         menuItems={globalMenu}
         onHrefClick={(href) => router.push(href)}
@@ -53,7 +55,7 @@ const Schedule: React.FC<ScheduleDataProps> = ({ scheduleData }) => {
             pad
             display={'inline-block'}
           >
-            {changeableData.map((data) => {
+            {changeableData?.map((data) => {
               return (
                 <div key={data.id}>
                   <h3>{data.title}</h3>

@@ -1,27 +1,26 @@
 import { Text } from '@megabrain/ui';
-import { wakaNumberToTime } from '@megabrain/core';
+import { wakaTimeStr } from './utils';
 
 interface WakaTimeTextProps {
   time: number;
+  bold?: boolean;
 }
 
-export const WakaTimeText: React.FC<WakaTimeTextProps> = ({ time }) => {
+export const WakaTimeText: React.FC<WakaTimeTextProps> = ({ time, bold = true }) => {
   return (
     <Text
       display="block"
       tag="p"
       type="primary"
-      weight="bold"
-      align="center"
+      weight={bold ? 'bold' : 'normal'}
+      // align="center"
+      css={{
+        margin: 'auto 0',
+      }}
     >
-      {listItemTimeStr(time)}
+      {wakaTimeStr(time)}
     </Text>
   );
 };
 
 export default WakaTimeText;
-
-const listItemTimeStr = (time: number) => {
-  const t = wakaNumberToTime(time);
-  return `${t.hour}시간 ${t.minute}분`;
-};

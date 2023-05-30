@@ -1,6 +1,5 @@
-import { createStitches, CSS as StitchesCSS } from '@stitches/react';
-
-export * from '@stitches/react';
+import { createStitches, CSS as StitchesCSS, VariantProps } from '@stitches/react';
+import { BaseHTMLAttributes } from 'react';
 
 const MODAL_ROOT_SELECTOR = `#modal-root`;
 export const MODAL_ROOT_ID = MODAL_ROOT_SELECTOR.slice(1);
@@ -32,6 +31,7 @@ export const { styled, css, getCssText, createTheme, globalCss, config, keyframe
         'accent-r': '#F45050',
         'on-accent-r': '#ffffff',
         'modal-background': 'rgba(0, 0, 0, 0.5)',
+        'input-background': '#fafafa',
 
         // background
         background: '#F0F0F0',
@@ -51,6 +51,8 @@ export const globalStyles = globalCss({
     position: 'fixed',
     top: 0,
     left: 0,
+    // width: '100%',
+    // height: '100%',
   },
 });
 
@@ -68,7 +70,11 @@ export const darkTheme = createTheme('dark', {
   },
 });
 
-export type CSS = StitchesCSS<typeof config>;
+type CSS = StitchesCSS<typeof config>;
+
+type CSSWithElement<T> = CSS & BaseHTMLAttributes<T>;
+
+export type { VariantProps, CSS, CSSWithElement };
 
 // Hex To RGB
 export const h2r = (hex: string) =>

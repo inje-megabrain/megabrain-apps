@@ -2,11 +2,42 @@ import { styled } from '@megabrain/ui/styles';
 
 export const BaseContainer = styled('div', {
   display: 'block',
-
+  background: 'transparent',
+  boxSizing: 'border-box',
   variants: {
+    shadow: {
+      true: {
+        boxShadow: '0px 0px 7px rgba(0,0,0,0.1)',
+      },
+    },
+    border: {
+      true: {
+        border: '1px solid #f7f7f8',
+      },
+    },
+    background: {
+      true: {
+        background: '$background',
+      },
+    },
+    radius: {
+      true: {
+        borderRadius: '8px',
+      },
+    },
+    modal: {
+      true: {
+        position: 'absolute',
+        top: '50%',
+        right: '50%',
+        transform: 'translate(50%,-50%)',
+      },
+    },
     //#region Display
-
     display: {
+      none: {
+        display: 'none',
+      },
       block: {
         display: 'block',
       },
@@ -16,8 +47,20 @@ export const BaseContainer = styled('div', {
       inline: {
         display: 'inline',
       },
+      flex: {
+        display: 'flex',
+      },
+      grid: {
+        display: 'grid',
+      },
     },
     //#endregion
+
+    flow: {
+      true: {
+        flex: 1,
+      },
+    },
 
     //#region Padding
     pad: {
@@ -79,12 +122,10 @@ export const BaseContainer = styled('div', {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100%',
       },
       vertical: {
         display: 'flex',
         alignItems: 'center',
-        height: '100%',
       },
       horizontal: {
         display: 'flex',
@@ -93,13 +134,13 @@ export const BaseContainer = styled('div', {
     },
     layoutCenter: {
       true: {
-        width: 975,
+        width: 920,
         margin: '0px auto',
         '@tablet': {
-          width: 750,
+          width: 600,
         },
         '@mobile': {
-          width: 580,
+          width: 380,
         },
       },
     },

@@ -12,6 +12,63 @@ export interface WakaMemberResponse {
   startDate: string;
 }
 
+export type WakaMemberDetailResponse = [
+  {
+    name: string;
+    totalEditors: WakaRawUnit[];
+    totalLanguages: WakaRawUnit[];
+    totalProejects: WakaRawUnit[];
+    oranization: WakaOrganization;
+    money: WakaRawMoney;
+    imageURL: string;
+  },
+  Record<string, WakaRawDaily>
+];
+
+export interface WakaMemberDetail {
+  name: string;
+  organization: WakaOrganization;
+  money: number;
+  lastDeposit: number;
+  githubId: string;
+  imageUrl: string;
+  editors: WakaUnit[];
+  projects: WakaUnit[];
+  languages: WakaUnit[];
+  days: WakaDaily[];
+}
+
+export interface WakaDaily {
+  date: number;
+  editor: WakaDailyUnit[];
+  language: WakaDailyUnit[];
+  project: WakaDailyUnit[];
+}
+
+export interface WakaDailyUnit {
+  name: string;
+  minutes: number;
+  percents: number;
+}
+
+export interface WakaRawDaily {
+  summariesEditors: WakaRawDailyUnit[];
+  summariesLanguages: WakaRawDailyUnit[];
+  summariesProjects: WakaRawDailyUnit[];
+}
+
+export interface WakaRawDailyUnit {
+  digital: string;
+  total_seconds: number;
+  hours: number;
+  seconds: number;
+  minutes: number;
+  name: string;
+  text: string;
+  decimal: string;
+  percent: number;
+}
+
 export interface WakaRawUnit {
   id: number;
   name: string;
@@ -77,4 +134,8 @@ export interface WakaMemberPostPayload {
 export interface WakaMemberAPIKeyUpdatePayload {
   id: string;
   apiKey: string;
+}
+export interface WakaMemberDetailGetPayload {
+  id: string;
+  date: 7 | 30;
 }

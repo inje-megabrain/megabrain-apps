@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 import { WakaMember, WakaPeriod, backend } from '@megabrain/core';
 import { WAKA_REVALIDATE_SECOND } from '~/constants/isr';
-import WakaComposite from '~/components/Waka';
+import { WakaPreview } from '~/components/Waka';
 import { useState } from 'react';
 import { Button, Container, Text } from '@megabrain/ui';
 
@@ -12,9 +12,12 @@ const TIME_UNDER_BOUNDARY = {
 
 interface WakaProps {
   members: WakaMember[];
+  lastUpdate: number;
 }
 
-const Waka: React.FC<WakaProps> = ({ members }) => {
+const kor = Intl.DateTimeFormat('ko', { dateStyle: 'long', timeStyle: 'short' });
+
+const Waka: React.FC<WakaProps> = ({ members, lastUpdate }) => {
   const [registerVisible, setRegisterVisible] = useState(false);
   const handleRegisterModalOpen = () => setRegisterVisible(true);
   const handleRegisterModalClose = () => setRegisterVisible(false);
@@ -24,26 +27,35 @@ const Waka: React.FC<WakaProps> = ({ members }) => {
         <Button
           pad
           type="contained"
+          css={{
+            marginBottom: '20px',
+          }}
           onClick={handleRegisterModalOpen}
         >
           등록
         </Button>
       </Container>
-      <WakaComposite>
-        <WakaComposite.MemberList members={members} />
-      </WakaComposite>
+      <Text
+        tag="p"
+        align="center"
+      >
+        마지막 업데이트 {kor.format(lastUpdate)}
+      </Text>
+      <WakaPreview>
+        <WakaPreview.MemberList members={members} />
+      </WakaPreview>
       <Text
         tag="h1"
         align="center"
       >
         근무시간 미달자
       </Text>
-      <WakaComposite.PureList
+      <WakaPreview.PureList
         members={members.filter((m) => m[WakaPeriod.Seven] < TIME_UNDER_BOUNDARY.limit)}
         additional={TIME_UNDER_BOUNDARY}
       />
       {registerVisible && (
-        <WakaComposite.RegisterModal
+        <WakaPreview.RegisterModal
           open={registerVisible}
           close={handleRegisterModalClose}
         />
@@ -56,12 +68,14 @@ export const getStaticProps: GetStaticProps<WakaProps> = async () => {
   try {
     await backend.wakas.updateTime(7);
   } catch {
-    console.log('pass error');
+    console.log('ISR API ERROR');
   }
+
   const members = await backend.wakas.members();
   return {
     props: {
       members,
+      lastUpdate: new Date().valueOf(),
     },
     revalidate: WAKA_REVALIDATE_SECOND,
   };

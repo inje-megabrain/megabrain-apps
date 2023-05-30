@@ -3,7 +3,7 @@ import { styled } from '@megabrain/ui/styles';
 export const Ranking = styled('span', {});
 
 export const informationStyle = {
-  width: 100,
+  width: 120,
   paddingLeft: 20,
   '@mobile': {
     display: 'none',
@@ -12,7 +12,7 @@ export const informationStyle = {
 export const progressWrapperStyle = {
   // marginTop: 10,
   '@mobile': {
-    width: '275px',
+    width: '270px',
     margin: '0 auto',
   },
 };

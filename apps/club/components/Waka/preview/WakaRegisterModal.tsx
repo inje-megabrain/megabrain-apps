@@ -1,11 +1,11 @@
-import { Button, Container, Flex, Logo, Modal, Text } from '@megabrain/ui';
+import { Button, Container, Flex, Input, Logo, Modal, Text } from '@megabrain/ui';
 import {
   WakaDepartment,
   WakaOrganization,
   postWakaMember,
   updateWakaMemberTime,
 } from '@megabrain/core';
-import { WakaMemberRegisterState, useWakaMemberRegister } from './hooks/register';
+import { WakaMemberRegisterState, useWakaMemberRegister } from '../hooks/register';
 import { registerContainerStyle } from './WakaRegisterModal.style';
 import { ChangeEventHandler } from 'react';
 
@@ -59,12 +59,12 @@ export const WakaRegisterModal: React.FC<WakaRegisterModal> = ({ open, close }) 
           Membership
         </Text>
 
-        <input
+        <Input
           value={state.name}
           placeholder="이름..."
           onChange={handleNameChange}
         />
-        <input
+        <Input
           value={state.githubName}
           placeholder="Github Name..."
           onChange={handleGithubNameChange}
@@ -77,12 +77,18 @@ export const WakaRegisterModal: React.FC<WakaRegisterModal> = ({ open, close }) 
           <option value={WakaDepartment.Frontend}>Frontend</option>
           <option value={WakaDepartment.Backend}>Backend</option>
         </select>
-        <input
+        <Input
           value={state.apiKey}
           placeholder="Wakatime API KEY"
           onChange={handleAPIChange}
         />
-        <a href="https://wakatime.com/settings/account">API Key...</a>
+        <a
+          rel="noreferrer"
+          href="https://wakatime.com/settings/account"
+          target="_blank"
+        >
+          API Key...
+        </a>
 
         <Flex
           direction={{

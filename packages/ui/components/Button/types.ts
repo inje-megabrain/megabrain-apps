@@ -14,6 +14,7 @@ export type ButtonSize = 'small' | 'medium' | 'large' | 'inherit';
 export type ButtonType = 'text' | 'contained' | 'outlined';
 
 export interface ButtonProps {
+  m?: boolean;
   icon?: JSX.Element;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
