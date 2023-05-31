@@ -1962,6 +1962,7 @@ __metadata:
     react: 18.2.0
     react-apexcharts: ^1.4.0
     react-dom: 18.2.0
+    react-icons: ^4.9.0
     react-svg: ^16.1.12
     swr: ^2.1.5
     tsconfig: "workspace:^"
@@ -11388,6 +11389,15 @@ __metadata:
   peerDependencies:
     react: ">=16.8.6"
   checksum: 75acb29ee4352cd4e2a509ca81e15f3b553439c069dac19035503d53c0fe2b6133d65f5e32ccdb61ed1514cfda1b615e34de6a9640973a7bda283b7eb98850a1
+  languageName: node
+  linkType: hard
+
+"react-icons@npm:^4.9.0":
+  version: 4.9.0
+  resolution: "react-icons@npm:4.9.0"
+  peerDependencies:
+    react: "*"
+  checksum: 69d1000d02349cf4baa78a0882aff09723d348d910256ea7489dea777abf10f158b27c1b5d3b1d2ec030e21320eae0afcc13f9c9d11afb85a8809c59a23a923c
   languageName: node
   linkType: hard
 
