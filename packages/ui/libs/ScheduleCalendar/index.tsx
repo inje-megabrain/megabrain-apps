@@ -13,6 +13,7 @@ const ScheduleCalendar: React.FC<CalendarProps> = ({ scheduleData, onChange }) =
       locale={'ko-KR'}
       onActiveStartDateChange={({ activeStartDate }) => onChange(activeStartDate as Date)}
       tileContent={({ date }) =>
+        scheduleData.length > 0 &&
         scheduleData.map((event) =>
           new Date(event.startDate).getMonth() == date.getMonth() &&
           new Date(event.endDate).getMonth() == date.getMonth() &&
