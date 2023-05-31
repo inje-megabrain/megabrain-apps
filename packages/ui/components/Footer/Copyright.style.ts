@@ -22,4 +22,8 @@ export const BaseCopyright = styled('div', {
   borderLeftWidth: 0,
   borderRightWidth: 0,
   margin: 0,
+  '@mobile': {
+    border: 0,
+    p: { textAlign: 'center', width: '100%' },
+  },
 });

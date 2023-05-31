@@ -11,7 +11,7 @@ const globalMenu: MenuItem[] = [
   },
   {
     label: 'Project',
-    href: '/project',
+    href: '/projects',
   },
   {
     label: 'Tech',

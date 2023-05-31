@@ -27,3 +27,21 @@ export interface NotionNumberProperty {
 export interface NotionHrefProperty {
   url: string;
 }
+
+export interface NotionPeopleProperty {
+  people: {
+    id: string;
+    name?: string;
+  }[];
+}
+
+export interface NotionEmailProperty {
+  email: string;
+}
+
+export interface NotionStatusProperty {
+  status: {
+    name: string;
+    color: string;
+  };
+}

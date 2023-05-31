@@ -1,8 +1,8 @@
 import { styled } from '@megabrain/ui/styles';
 
 export const BaseMobileMenu = styled('div', {
-  $$color: '$colors$background',
-  $$backgroundColor: '$colors$primary',
+  $$color: '$colors$primary',
+  $$backgroundColor: '$colors$background',
   $$onColor: '$colors$accent-r',
 
   position: 'absolute',
@@ -17,50 +17,49 @@ export const BaseMobileMenu = styled('div', {
   padding: '0',
   margin: '0',
   zIndex: '9999',
-  backgroundColor: '#000000CD',
-  backdropFilter: 'blur(7px)',
+  backgroundColor: '#FFFFFFDD',
+  backdropFilter: 'blur(14px)',
+  textAlign: 'left',
 
   '@mobile': {
-    display: 'flex',
+    display: 'inline-flex',
     button: {
       position: 'absolute',
       cursor: 'pointer',
       top: '0',
       right: '0',
       margin: '12px 12px 0 0',
-      width: '32px',
-      height: '32px',
+      width: 'auto',
       backgroundColor: 'transparent',
       color: '$$color',
       border: '0',
       fontSize: '32px',
       fontWeight: 'bold',
     },
-    ul: {
+    div: {
+      margin: '0',
+      width: 'calc(100vw - 40px)',
+      height: 'auto',
       button: {
         position: 'relative',
+        textAlign: 'left',
         fontWeight: 'inherit',
       },
       display: 'flex',
       position: 'relative',
       transition: 'all 0.15s ease-in-out',
       flexDirection: 'column',
-      height: 'auto',
-      li: {
-        display: 'flex',
-
+      div: {
         position: 'relative',
 
         width: '100%',
         height: 'auto',
-        ul: {
-          display: 'flex',
+        div: {
           position: 'relative',
           flexDirection: 'column',
           li: {
-            display: 'flex',
-            position: 'relative',
-            justifyContent: 'center',
+            listStyle: 'none',
+            button: { fontSize: '23px', width: '100%', padding: '5px 7px' },
           },
         },
       },

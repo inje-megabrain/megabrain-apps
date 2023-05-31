@@ -96,7 +96,7 @@ yarn add [dependency-name]
 
 ```sh
 # 예시: yarn workspace @megabrain/ui add react
-yarn workspace [project-name] add [dependency-name]
+yarn workspace [projects-name] add [dependency-name]
 ```
 
 ### Storybook
@@ -121,7 +121,7 @@ yarn workspace @megabrain/ui build-storybook
 
 [다음 글](https://git-scm.com/book/ko/v2/Git-%EB%8F%84%EA%B5%AC-%EC%84%9C%EB%B8%8C%EB%AA%A8%EB%93%88)을 참조하여 작성되었습니다.
 
-### Root 에서 Submodule Project 수정사항 동시 적용하기
+### Root 에서 Submodule Projects 수정사항 동시 적용하기
 
 ```sh
 git config --global diff.submodule log
