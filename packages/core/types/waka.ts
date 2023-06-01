@@ -15,6 +15,7 @@ export interface WakaMemberResponse {
 export type WakaMemberDetailResponse = [
   {
     name: string;
+    department: string;
     totalEditors: WakaRawUnit[];
     totalLanguages: WakaRawUnit[];
     totalProejects: WakaRawUnit[];
@@ -28,6 +29,7 @@ export type WakaMemberDetailResponse = [
 export interface WakaMemberDetail {
   name: string;
   organization: WakaOrganization;
+  department: WakaDepartment;
   money: number;
   lastDeposit: number;
   githubId: string;
