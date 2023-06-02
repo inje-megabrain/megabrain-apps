@@ -30,6 +30,7 @@ const ServerHealthCheck: React.FC<HealthProps> = ({ serverStatus }) => {
         menuItems={globalMenu}
         onHrefClick={(href) => router.push(href)}
       />
+      <div style={{ height: '70px' }}></div>
       <Container pad>
         <Text tag="h1">서버 상태</Text>
         <Container

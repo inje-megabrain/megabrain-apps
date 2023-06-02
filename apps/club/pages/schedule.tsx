@@ -38,6 +38,7 @@ const Schedule: React.FC<ScheduleDataProps> = ({ scheduleData }) => {
         menuItems={globalMenu}
         onHrefClick={(href) => router.push(href)}
       />
+      <div style={{ height: '70px' }}></div>
       <Container pad>
         <Text
           css={{

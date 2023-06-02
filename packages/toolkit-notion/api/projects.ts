@@ -10,7 +10,6 @@ export const getRawProjectList: any = async () =>
 
 export const getProjectList = async () => {
   const raw = await getRawProjectList();
-
   if (raw) {
     return decompositionProjectDatabaseCollection(filterProjectDatabaseCollection(raw.results));
   }
