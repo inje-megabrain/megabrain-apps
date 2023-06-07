@@ -1,16 +1,16 @@
 import {
+  WakaDaily,
+  WakaDailyUnit,
   WakaDepartment,
   WakaMember,
+  WakaMemberDetail,
   WakaMemberDetailResponse,
   WakaMemberResponse,
   WakaOrganization,
   WakaPeriod,
-  WakaMemberDetail,
+  WakaRawDailyUnit,
   WakaRawUnit,
   WakaUnit,
-  WakaDaily,
-  WakaRawDailyUnit,
-  WakaDailyUnit,
 } from '../types';
 
 export const transformRawIntoWakaMemberDetail = ([
@@ -28,6 +28,7 @@ export const transformRawIntoWakaMemberDetail = ([
     projects: user.totalProejects.map(parseWakaUnit),
     languages: user.totalLanguages.map(parseWakaUnit),
     days: parseWakaDaily(stats),
+    department: user.department as WakaDepartment,
   };
 };
 

@@ -1,11 +1,11 @@
 import { GithubUser, WakaMemberDetail } from '@megabrain/core';
 import { Flex, Text } from '@megabrain/ui';
-import { calcWeeklyWage, sortWakaUnits, sumOfWakaUnits, wakaUnitToLabels } from '../utils';
-import Coin from '../Coin';
-import { itemContainer, skillContainer } from './WakaStatusbar.style';
-import { formatSkillIconUrl } from '../utils/icons';
-import WakaTimeText from '../WakaTimeText';
 import { ExternalLink } from 'react-feather';
+import Coin from '../Coin';
+import WakaTimeText from '../WakaTimeText';
+import { calcWeeklyWage, sortWakaUnits, sumOfWakaUnits, wakaUnitToLabels } from '../utils';
+import { formatSkillIconUrl } from '../utils/icons';
+import { itemContainer, skillContainer } from './WakaStatusbar.style';
 
 interface WakaStatusbarProps {
   data: WakaMemberDetail;
@@ -36,7 +36,7 @@ export const WakaStatusbar: React.FC<WakaStatusbarProps> = ({ data, githubUser }
               fontSize: 25,
             }}
           >
-            {data.name} - Frontend
+            {data.name} - {data.department}
           </Text>
           <a
             rel="noreferrer"
