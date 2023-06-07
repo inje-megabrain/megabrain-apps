@@ -46,7 +46,7 @@ export const transformRawIntoWakaMember = (raw: WakaMemberResponse): WakaMember 
     [WakaPeriod.Thirty]: parseWakaStringTime(raw.thirtyDays),
   };
 };
-const wakaStringTimeRegex = /(\d+) hrs (\d+) mins/;
+const wakaStringTimeRegex = /(\d+) hrs (\d+) mins?/;
 const parseWakaStringTime = (time: string): number => {
   const matches = wakaStringTimeRegex.exec(time);
   if (matches) {
