@@ -1,9 +1,9 @@
-import { GetStaticProps } from 'next';
 import { WakaMember, WakaPeriod, backend } from '@megabrain/core';
-import { WAKA_REVALIDATE_SECOND } from '~/constants/isr';
-import { WakaPreview } from '~/components/Waka';
-import { useState } from 'react';
 import { Button, Container, Text } from '@megabrain/ui';
+import { GetStaticProps } from 'next';
+import { useState } from 'react';
+import { WakaPreview } from '~/components/Waka';
+import { WAKA_REVALIDATE_SECOND } from '~/constants/isr';
 
 const TIME_UNDER_BOUNDARY = {
   limit: 600,

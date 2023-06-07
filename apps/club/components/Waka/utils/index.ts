@@ -80,7 +80,7 @@ export const calcWeeklyWage = (minutes: number) =>
 export const sumOfWakaDailyUnits = (units: WakaDailyUnit[]) =>
   units.reduce((acc, v) => acc + v.minutes, 0);
 
-export const wakaTimeStr = (time: number) => {
+export const wakaTimeStr = (time = 0) => {
   const t = wakaNumberToTime(time);
   return `${t.hour}시간 ${t.minute}분`;
 };

@@ -9,3 +9,7 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+.my-cool-chart {
+  position: relative;
+}

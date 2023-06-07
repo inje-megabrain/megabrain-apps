@@ -1,6 +1,6 @@
 import { WakaMemberDetail } from '@megabrain/core';
-import { DAY_OF_WEEK, sumOfWakaDailyUnits, wakaTimeStr } from '../utils';
 import { CSSWithElement, Flex, Text } from '@megabrain/ui';
+import { DAY_OF_WEEK, sumOfWakaDailyUnits, wakaTimeStr } from '../utils';
 
 interface WakaAbstractProps {
   detail: WakaMemberDetail;
@@ -35,6 +35,12 @@ export const WakaAbstract: React.FC<WakaAbstractProps> = ({ detail }) => {
           }}
         >
           <Text css={abstractTimeStyle}>{wakaTimeStr(topLang.time)}</Text>
+          <Text
+            weight="thin"
+            css={labelCSS}
+          >
+            language
+          </Text>
           <Text>{topLang.name}</Text>
         </Flex>
         <Flex
@@ -45,6 +51,12 @@ export const WakaAbstract: React.FC<WakaAbstractProps> = ({ detail }) => {
           }}
         >
           <Text css={abstractTimeStyle}>{wakaTimeStr(topProject.time)}</Text>
+          <Text
+            weight="thin"
+            css={labelCSS}
+          >
+            project
+          </Text>
           <Text>{topProject.name}</Text>
         </Flex>
       </Flex>
@@ -62,6 +74,12 @@ export const WakaAbstract: React.FC<WakaAbstractProps> = ({ detail }) => {
           }}
         >
           <Text css={abstractTimeStyle}>{wakaTimeStr(topEditor.time)}</Text>
+          <Text
+            weight="thin"
+            css={labelCSS}
+          >
+            editor
+          </Text>
           <Text>{topEditor.name}</Text>
         </Flex>
         <Flex
@@ -72,6 +90,12 @@ export const WakaAbstract: React.FC<WakaAbstractProps> = ({ detail }) => {
           }}
         >
           <Text css={abstractTimeStyle}>{wakaTimeStr(topDay.time)}</Text>
+          <Text
+            weight="thin"
+            css={labelCSS}
+          >
+            day
+          </Text>
           <Text>{topDay.name}요일</Text>
         </Flex>
       </Flex>
@@ -86,15 +110,26 @@ const abstractBoxStyle: CSSWithElement<HTMLDivElement> = {
   columnGap: 20,
   '& > div': {
     width: '180px',
-    padding: '20px 0px',
+    padding: '15px 0px',
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'column',
     rowGap: 5,
+  },
+
+  '@mobile': {
+    width: '80%',
+    '& > div:nth-child(2)': {
+      alignSelf: 'flex-end',
+    },
   },
 };
 
 const abstractTimeStyle: CSSWithElement<HTMLSpanElement> = {
   fontSize: 18,
   fontWeight: 600,
+};
+
+const labelCSS: CSSWithElement<HTMLElement> = {
+  fontSize: 12,
 };
