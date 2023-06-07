@@ -1,4 +1,4 @@
-type MenuItem = { href: string; label: string; children?: MenuItem[] };
+export type MenuItem = { href: string; label: string; children?: MenuItem[] };
 
 export interface HeaderProps {
   menuItems: MenuItem[];

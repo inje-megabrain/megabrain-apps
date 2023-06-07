@@ -4,15 +4,28 @@ import { HeaderProps } from './types';
 import BaseHeader from './Header.style';
 import Hamburger from './Hamburger.style';
 import { BaseMobileMenu } from './MobileMenu.style';
+import { styled } from '@megabrain/ui/styles';
+import { Logo } from '@megabrain/ui/components';
 
 export const Header = forwardRef<HTMLDivElement, HeaderProps>(({ menuItems, onHrefClick }, ref) => {
   const [hambugerOpen, setHamburgerOpen] = useState(false);
   const onHamburgerClick = () => {
     setHamburgerOpen(!hambugerOpen);
   };
+
+  const LogoButton = styled('button', {
+    backgroundColor: 'transparent',
+    border: 'none',
+    cursor: 'pointer',
+    '&:hover': {
+      opacity: 0.7,
+    },
+  });
   return (
     <BaseHeader ref={ref}>
-      <p>Megabrain Logo</p>
+      <LogoButton onClick={() => onHrefClick('/')}>
+        <Logo />
+      </LogoButton>
       <ul>
         {menuItems.map((item) => (
           <li key={item.href}>
@@ -60,22 +73,22 @@ export const Header = forwardRef<HTMLDivElement, HeaderProps>(({ menuItems, onHr
       {hambugerOpen && (
         <BaseMobileMenu>
           <button onClick={onHamburgerClick}>X</button>
-          <ul>
+          <div>
             {menuItems.map((item) => (
-              <li key={item.href}>
+              <div key={item.href}>
                 <button onClick={() => onHrefClick(item.href)}>{item.label}</button>
                 {item.children && (
-                  <ul>
+                  <div>
                     {item.children.map((child) => (
                       <li key={child.href}>
                         <button onClick={() => onHrefClick(child.href)}>{child.label}</button>
                       </li>
                     ))}
-                  </ul>
+                  </div>
                 )}
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         </BaseMobileMenu>
       )}
     </BaseHeader>

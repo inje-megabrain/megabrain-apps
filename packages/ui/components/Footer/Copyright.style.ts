@@ -3,7 +3,6 @@ import { styled } from '@megabrain/ui/styles';
 export const BaseCopyright = styled('div', {
   boxSizing: 'border-box',
   flexShrink: 0,
-  width: '100%',
   maxWidth: '100%',
   height: 'min-content' /* 51px */,
   display: 'flex',
@@ -23,4 +22,8 @@ export const BaseCopyright = styled('div', {
   borderLeftWidth: 0,
   borderRightWidth: 0,
   margin: 0,
+  '@mobile': {
+    border: 0,
+    p: { textAlign: 'center', width: '100%' },
+  },
 });

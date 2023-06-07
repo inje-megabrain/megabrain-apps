@@ -8,5 +8,7 @@ declare global {
   // eslint-disable-next-line
   var core: {
     WAKA_BASE_URL: string;
+    SCHEDULE_BASE_URL: string;
+    SERVERHEALTH_BASE_URL: string;
   };
 }

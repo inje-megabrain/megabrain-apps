@@ -22,6 +22,7 @@
     "react-apexcharts": "^1.4.0",
     "react-bubble-chart": "^0.4.0",
     "react-dom": "18.2.0",
+    "react-icons": "^4.9.0",
     "react-svg": "^16.1.12",
     "swr": "^2.1.5",
     "typescript": "5.0.4"

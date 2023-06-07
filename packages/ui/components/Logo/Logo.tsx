@@ -1,14 +1,17 @@
 /* eslint-disable */
 import { forwardRef } from 'react';
-import LightLogo from './logo-light.svg';
+import LightLogo from '@megabrain/ui/assets/logo-light.png';
 import { LogoProps } from './types';
+import Image from 'next/image';
 
-export const Logo = forwardRef<HTMLOrSVGElement, LogoProps>(({ size = 'medium' }, ref) => {
+export const Logo = forwardRef<SVGElement, LogoProps>(({ size = 'small' }, ref) => {
   return (
     <span>
-      <LightLogo
-        width={'160px'}
-        height={'40px'}
+      <Image
+        src={LightLogo}
+        alt="logo"
+        width={size === 'small' ? 80 : 300}
+        height={size === 'small' ? 40 : 150}
       />
     </span>
   );

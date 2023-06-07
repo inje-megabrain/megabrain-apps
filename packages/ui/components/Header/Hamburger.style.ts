@@ -5,7 +5,7 @@ export const Hamburger = styled('button', {
   $$backgroundColor: '$colors$background',
   $$onColor: '$colors$accent-r',
 
-  fill: '$$backgroundColor',
+  fill: '$$color',
   width: '44px',
   height: '44px',
   border: '0',

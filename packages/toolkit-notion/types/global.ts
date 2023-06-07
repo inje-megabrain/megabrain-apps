@@ -6,6 +6,7 @@ declare global {
     SECRET_KEY: string;
     RECRUIT_DB_ID: string;
     MEMBER_DB_ID: string;
+    PROJECT_DB_ID: string;
     VERSION: string;
   };
 }

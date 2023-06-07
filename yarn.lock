@@ -1933,8 +1933,8 @@ __metadata:
     "@types/react": 18.2.6
     "@types/react-dom": 18.2.4
     eslint: 8.40.0
-    eslint-config-next: 13.4.1
-    next: 13.4.1
+    eslint-config-next: 13.4.2
+    next: 13.4.2
     react: 18.2.0
     react-dom: 18.2.0
     tsconfig: "workspace:^"
@@ -1966,6 +1966,7 @@ __metadata:
     react-apexcharts: ^1.4.0
     react-bubble-chart: ^0.4.0
     react-dom: 18.2.0
+    react-icons: ^4.9.0
     react-svg: ^16.1.12
     swr: ^2.1.5
     tsconfig: "workspace:^"
@@ -2098,6 +2099,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@next/env@npm:13.4.2":
+  version: 13.4.2
+  resolution: "@next/env@npm:13.4.2"
+  checksum: 103f0e836c16f69067410d780a411668c640b93cb380ba5a13a5d014f5e83bc9b4745c8840e319aebffc31b3cddeb9804e96ccca1411a11de0de6056c3d99f0a
+  languageName: node
+  linkType: hard
+
 "@next/eslint-plugin-next@npm:13.4.1":
   version: 13.4.1
   resolution: "@next/eslint-plugin-next@npm:13.4.1"
@@ -2107,9 +2115,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@next/eslint-plugin-next@npm:13.4.2":
+  version: 13.4.2
+  resolution: "@next/eslint-plugin-next@npm:13.4.2"
+  dependencies:
+    glob: 7.1.7
+  checksum: be6d258eedeb52c120796076b0243d3b2f051e84b43990a4a61ab2e26e143982641e97c71ad7c657e9bb1054a7fe12eebb91e4b76dfc99953c859eff01ee9c89
+  languageName: node
+  linkType: hard
+
 "@next/swc-darwin-arm64@npm:13.4.1":
   version: 13.4.1
   resolution: "@next/swc-darwin-arm64@npm:13.4.1"
+  conditions: os=darwin & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"@next/swc-darwin-arm64@npm:13.4.2":
+  version: 13.4.2
+  resolution: "@next/swc-darwin-arm64@npm:13.4.2"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
@@ -2121,9 +2145,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@next/swc-darwin-x64@npm:13.4.2":
+  version: 13.4.2
+  resolution: "@next/swc-darwin-x64@npm:13.4.2"
+  conditions: os=darwin & cpu=x64
+  languageName: node
+  linkType: hard
+
 "@next/swc-linux-arm64-gnu@npm:13.4.1":
   version: 13.4.1
   resolution: "@next/swc-linux-arm64-gnu@npm:13.4.1"
+  conditions: os=linux & cpu=arm64 & libc=glibc
+  languageName: node
+  linkType: hard
+
+"@next/swc-linux-arm64-gnu@npm:13.4.2":
+  version: 13.4.2
+  resolution: "@next/swc-linux-arm64-gnu@npm:13.4.2"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
@@ -2136,9 +2174,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@next/swc-linux-arm64-musl@npm:13.4.2":
+  version: 13.4.2
+  resolution: "@next/swc-linux-arm64-musl@npm:13.4.2"
+  conditions: os=linux & cpu=arm64 & libc=musl
+  languageName: node
+  linkType: hard
+
 "@next/swc-linux-x64-gnu@npm:13.4.1":
   version: 13.4.1
   resolution: "@next/swc-linux-x64-gnu@npm:13.4.1"
+  conditions: os=linux & cpu=x64 & libc=glibc
+  languageName: node
+  linkType: hard
+
+"@next/swc-linux-x64-gnu@npm:13.4.2":
+  version: 13.4.2
+  resolution: "@next/swc-linux-x64-gnu@npm:13.4.2"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
@@ -2151,9 +2203,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@next/swc-linux-x64-musl@npm:13.4.2":
+  version: 13.4.2
+  resolution: "@next/swc-linux-x64-musl@npm:13.4.2"
+  conditions: os=linux & cpu=x64 & libc=musl
+  languageName: node
+  linkType: hard
+
 "@next/swc-win32-arm64-msvc@npm:13.4.1":
   version: 13.4.1
   resolution: "@next/swc-win32-arm64-msvc@npm:13.4.1"
+  conditions: os=win32 & cpu=arm64
+  languageName: node
+  linkType: hard
+
+"@next/swc-win32-arm64-msvc@npm:13.4.2":
+  version: 13.4.2
+  resolution: "@next/swc-win32-arm64-msvc@npm:13.4.2"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
@@ -2165,9 +2231,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@next/swc-win32-ia32-msvc@npm:13.4.2":
+  version: 13.4.2
+  resolution: "@next/swc-win32-ia32-msvc@npm:13.4.2"
+  conditions: os=win32 & cpu=ia32
+  languageName: node
+  linkType: hard
+
 "@next/swc-win32-x64-msvc@npm:13.4.1":
   version: 13.4.1
   resolution: "@next/swc-win32-x64-msvc@npm:13.4.1"
+  conditions: os=win32 & cpu=x64
+  languageName: node
+  linkType: hard
+
+"@next/swc-win32-x64-msvc@npm:13.4.2":
+  version: 13.4.2
+  resolution: "@next/swc-win32-x64-msvc@npm:13.4.2"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -7520,6 +7600,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-config-next@npm:13.4.2":
+  version: 13.4.2
+  resolution: "eslint-config-next@npm:13.4.2"
+  dependencies:
+    "@next/eslint-plugin-next": 13.4.2
+    "@rushstack/eslint-patch": ^1.1.3
+    "@typescript-eslint/parser": ^5.42.0
+    eslint-import-resolver-node: ^0.3.6
+    eslint-import-resolver-typescript: ^3.5.2
+    eslint-plugin-import: ^2.26.0
+    eslint-plugin-jsx-a11y: ^6.5.1
+    eslint-plugin-react: ^7.31.7
+    eslint-plugin-react-hooks: ^4.5.0
+  peerDependencies:
+    eslint: ^7.23.0 || ^8.0.0
+    typescript: ">=3.3.1"
+  peerDependenciesMeta:
+    typescript:
+      optional: true
+  checksum: 7967443d493a0b0fc45629c587c642f3aef4e17968592b4aea53bc858dc61091a98786aeae2d6d6d574434b838a0935d3d3d20246bd914880bf9a4b82caf7cf8
+  languageName: node
+  linkType: hard
+
 "eslint-config-prettier@npm:^8.8.0":
   version: 8.8.0
   resolution: "eslint-config-prettier@npm:8.8.0"
@@ -10520,6 +10623,67 @@ __metadata:
   languageName: node
   linkType: hard
 
+"next@npm:13.4.2":
+  version: 13.4.2
+  resolution: "next@npm:13.4.2"
+  dependencies:
+    "@next/env": 13.4.2
+    "@next/swc-darwin-arm64": 13.4.2
+    "@next/swc-darwin-x64": 13.4.2
+    "@next/swc-linux-arm64-gnu": 13.4.2
+    "@next/swc-linux-arm64-musl": 13.4.2
+    "@next/swc-linux-x64-gnu": 13.4.2
+    "@next/swc-linux-x64-musl": 13.4.2
+    "@next/swc-win32-arm64-msvc": 13.4.2
+    "@next/swc-win32-ia32-msvc": 13.4.2
+    "@next/swc-win32-x64-msvc": 13.4.2
+    "@swc/helpers": 0.5.1
+    busboy: 1.6.0
+    caniuse-lite: ^1.0.30001406
+    postcss: 8.4.14
+    styled-jsx: 5.1.1
+    zod: 3.21.4
+  peerDependencies:
+    "@opentelemetry/api": ^1.1.0
+    fibers: ">= 3.1.0"
+    node-sass: ^6.0.0 || ^7.0.0
+    react: ^18.2.0
+    react-dom: ^18.2.0
+    sass: ^1.3.0
+  dependenciesMeta:
+    "@next/swc-darwin-arm64":
+      optional: true
+    "@next/swc-darwin-x64":
+      optional: true
+    "@next/swc-linux-arm64-gnu":
+      optional: true
+    "@next/swc-linux-arm64-musl":
+      optional: true
+    "@next/swc-linux-x64-gnu":
+      optional: true
+    "@next/swc-linux-x64-musl":
+      optional: true
+    "@next/swc-win32-arm64-msvc":
+      optional: true
+    "@next/swc-win32-ia32-msvc":
+      optional: true
+    "@next/swc-win32-x64-msvc":
+      optional: true
+  peerDependenciesMeta:
+    "@opentelemetry/api":
+      optional: true
+    fibers:
+      optional: true
+    node-sass:
+      optional: true
+    sass:
+      optional: true
+  bin:
+    next: dist/bin/next
+  checksum: 73b9da0d72b54720791ec3e3a3c79922172de5df01d5157507bd095033c33cd611f35da3310d859b3a75456977a4a9a4ef311074517b172dddc92dc769e03e49
+  languageName: node
+  linkType: hard
+
 "no-case@npm:^3.0.4":
   version: 3.0.4
   resolution: "no-case@npm:3.0.4"
@@ -11720,6 +11884,15 @@ __metadata:
   peerDependencies:
     react: ">=16.8.6"
   checksum: 75acb29ee4352cd4e2a509ca81e15f3b553439c069dac19035503d53c0fe2b6133d65f5e32ccdb61ed1514cfda1b615e34de6a9640973a7bda283b7eb98850a1
+  languageName: node
+  linkType: hard
+
+"react-icons@npm:^4.9.0":
+  version: 4.9.0
+  resolution: "react-icons@npm:4.9.0"
+  peerDependencies:
+    react: "*"
+  checksum: 69d1000d02349cf4baa78a0882aff09723d348d910256ea7489dea777abf10f158b27c1b5d3b1d2ec030e21320eae0afcc13f9c9d11afb85a8809c59a23a923c
   languageName: node
   linkType: hard
 
