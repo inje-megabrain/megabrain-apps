@@ -1,9 +1,13 @@
 import { WakaMember, WakaPeriod, backend } from '@megabrain/core';
-import { Button, Container, Text } from '@megabrain/ui';
+import { Container, Header, Text } from '@megabrain/ui';
 import { GetStaticProps } from 'next';
 import { useState } from 'react';
 import { WakaPreview } from '~/components/Waka';
 import { WAKA_REVALIDATE_SECOND } from '~/constants/isr';
+import Seo from '~/components/Seo';
+import globalMenu from '~/constants/globalMenu';
+import { useRouter } from 'next/router';
+import Footer from '@megabrain/ui/components/Footer/Footer';
 
 const TIME_UNDER_BOUNDARY = {
   limit: 600,
@@ -21,46 +25,50 @@ const Waka: React.FC<WakaProps> = ({ members, lastUpdate }) => {
   const [registerVisible, setRegisterVisible] = useState(false);
   const handleRegisterModalOpen = () => setRegisterVisible(true);
   const handleRegisterModalClose = () => setRegisterVisible(false);
+  const { push } = useRouter();
   return (
-    <Container css={{ marginTop: 20 }}>
-      <Container gravity="horizontal">
-        <Button
-          pad
-          type="contained"
-          css={{
-            marginBottom: '20px',
-          }}
-          onClick={handleRegisterModalOpen}
-        >
-          등록
-        </Button>
-      </Container>
-      <Text
-        tag="p"
-        align="center"
-      >
-        마지막 업데이트 {kor.format(lastUpdate)}
-      </Text>
-      <WakaPreview>
-        <WakaPreview.MemberList members={members} />
-      </WakaPreview>
-      <Text
-        tag="h1"
-        align="center"
-      >
-        근무시간 미달자
-      </Text>
-      <WakaPreview.PureList
-        members={members.filter((m) => m[WakaPeriod.Seven] < TIME_UNDER_BOUNDARY.limit)}
-        additional={TIME_UNDER_BOUNDARY}
+    <>
+      <Seo templateTitle={'와카타임'} />
+      <Header
+        menuItems={globalMenu}
+        onHrefClick={push}
       />
-      {registerVisible && (
-        <WakaPreview.RegisterModal
-          open={registerVisible}
-          close={handleRegisterModalClose}
+      <Container css={{ height: '70px' }}></Container>
+      <Container css={{ marginTop: 20 }}>
+        <Text
+          tag="h1"
+          align="center"
+        >
+          Mega Waka Board
+        </Text>
+        <Text
+          tag="p"
+          align="center"
+        >
+          마지막 업데이트 {kor.format(lastUpdate)}
+        </Text>
+        <WakaPreview>
+          <WakaPreview.MemberList members={members} />
+        </WakaPreview>
+        <Text
+          tag="h1"
+          align="center"
+        >
+          근무시간 미달자
+        </Text>
+        <WakaPreview.PureList
+          members={members.filter((m) => m[WakaPeriod.Seven] < TIME_UNDER_BOUNDARY.limit)}
+          additional={TIME_UNDER_BOUNDARY}
         />
-      )}
-    </Container>
+        {registerVisible && (
+          <WakaPreview.RegisterModal
+            open={registerVisible}
+            close={handleRegisterModalClose}
+          />
+        )}
+      </Container>
+      <Footer />
+    </>
   );
 };
 

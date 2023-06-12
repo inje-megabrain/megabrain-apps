@@ -41,9 +41,8 @@ const Schedule: React.FC<ScheduleDataProps> = ({ scheduleData }) => {
       <div style={{ height: '70px' }}></div>
       <Container pad>
         <Text
-          css={{
-            fontSize: '2rem',
-          }}
+          tag={'h1'}
+          align="center"
         >
           Schedule
         </Text>

@@ -32,7 +32,12 @@ const ServerHealthCheck: React.FC<HealthProps> = ({ serverStatus }) => {
       />
       <div style={{ height: '70px' }}></div>
       <Container pad>
-        <Text tag="h1">서버 상태</Text>
+        <Text
+          tag="h1"
+          align={'center'}
+        >
+          서버 상태
+        </Text>
         <Container
           display={'grid'}
           css={{
