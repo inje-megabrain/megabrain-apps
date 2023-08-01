@@ -1,13 +1,13 @@
 import { WakaMember, WakaPeriod, backend } from '@megabrain/core';
-import { Container, Header, Text } from '@megabrain/ui';
-import { GetStaticProps } from 'next';
-import { useState } from 'react';
-import { WakaPreview } from '~/components/Waka';
-import { WAKA_REVALIDATE_SECOND } from '~/constants/isr';
-import Seo from '~/components/Seo';
-import globalMenu from '~/constants/globalMenu';
-import { useRouter } from 'next/router';
+import { Button, Container, Flex, Header, Text } from '@megabrain/ui';
 import Footer from '@megabrain/ui/components/Footer/Footer';
+import { GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import Seo from '~/components/Seo';
+import { WakaPreview } from '~/components/Waka';
+import globalMenu from '~/constants/globalMenu';
+import { WAKA_REVALIDATE_SECOND } from '~/constants/isr';
 
 const TIME_UNDER_BOUNDARY = {
   limit: 600,
@@ -47,6 +47,17 @@ const Waka: React.FC<WakaProps> = ({ members, lastUpdate }) => {
         >
           마지막 업데이트 {kor.format(lastUpdate)}
         </Text>
+        <Flex
+          layoutCenter
+          justify="end"
+        >
+          <Button
+            type="outlined"
+            onClick={handleRegisterModalOpen}
+          >
+            이용자 등록
+          </Button>
+        </Flex>
         <WakaPreview>
           <WakaPreview.MemberList members={members} />
         </WakaPreview>
