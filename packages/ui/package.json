@@ -10,9 +10,11 @@
     "@storybook/addon-interactions": "^7.0.10",
     "@storybook/addon-links": "^7.0.10",
     "@storybook/blocks": "^7.0.10",
+    "@storybook/builder-webpack5": "^7.0.12",
     "@storybook/nextjs": "^7.0.10",
     "@storybook/react": "^7.0.10",
     "@storybook/testing-library": "^0.0.14-next.2",
+    "@svgr/webpack": "^8.0.1",
     "@types/eslint": "^8.37.0",
     "@types/node": "^20.1.2",
     "@types/react": "^18.2.6",
@@ -27,6 +29,7 @@
   "dependencies": {
     "@stitches/react": "^1.2.8",
     "next": "13.4.1",
+    "react-calendar": "^4.2.1",
     "react-feather": "^2.0.10"
   },
   "scripts": {

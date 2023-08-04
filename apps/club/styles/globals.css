@@ -1,0 +1,15 @@
+html,
+body,
+#__next {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.my-cool-chart {
+  position: relative;
+}

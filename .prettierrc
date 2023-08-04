@@ -4,6 +4,7 @@
   "useTabs": false,
   "tabWidth": 2,
   "trailingComma": "es5",
-  "printWidth": 120,
-  "bracketSpacing": true
+  "printWidth": 100,
+  "bracketSpacing": true,
+  "singleAttributePerLine": true
 }

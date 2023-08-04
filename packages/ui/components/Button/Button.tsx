@@ -6,7 +6,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       icon,
+      full,
       type = 'text',
+      pad,
       color = 'primary',
       size = 'medium',
       children,
@@ -15,16 +17,21 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       iconOnly,
       onClick,
       rounded = true,
+      m,
     },
     ref
   ) => {
     return (
       <BaseButton
+        m={m}
+        role="button"
         ref={ref}
         type={type}
         color={color}
         size={size}
         css={css}
+        full={full}
+        pad={pad}
         iconOnly={iconOnly}
         onClick={disabled ? undefined : onClick}
         disabled={disabled}

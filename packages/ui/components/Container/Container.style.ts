@@ -1,23 +1,43 @@
 import { styled } from '@megabrain/ui/styles';
-import { css } from '@stitches/react';
-
-const baseCenter = css({
-  width: 1200,
-  '@tablet': {
-    width: 975,
-  },
-  '@mobile': {
-    width: 580,
-  },
-});
 
 export const BaseContainer = styled('div', {
   display: 'block',
-
+  background: 'transparent',
+  boxSizing: 'border-box',
   variants: {
+    shadow: {
+      true: {
+        boxShadow: '0px 0px 7px rgba(0,0,0,0.1)',
+      },
+    },
+    border: {
+      true: {
+        border: '1px solid #f7f7f8',
+      },
+    },
+    background: {
+      true: {
+        background: '$background',
+      },
+    },
+    radius: {
+      true: {
+        borderRadius: '8px',
+      },
+    },
+    modal: {
+      true: {
+        position: 'absolute',
+        top: '50%',
+        right: '50%',
+        transform: 'translate(50%,-50%)',
+      },
+    },
     //#region Display
-
     display: {
+      none: {
+        display: 'none',
+      },
       block: {
         display: 'block',
       },
@@ -27,8 +47,20 @@ export const BaseContainer = styled('div', {
       inline: {
         display: 'inline',
       },
+      flex: {
+        display: 'flex',
+      },
+      grid: {
+        display: 'grid',
+      },
     },
     //#endregion
+
+    flow: {
+      true: {
+        flex: 1,
+      },
+    },
 
     //#region Padding
     pad: {
@@ -43,6 +75,19 @@ export const BaseContainer = styled('div', {
       },
     },
     //#endregion
+
+    full: {
+      horizontal: {
+        width: '100%',
+      },
+      vertical: {
+        height: '100%',
+      },
+      all: {
+        height: '100%',
+        width: '100%',
+      },
+    },
 
     //#region  Scroll
     overflow: {
@@ -72,17 +117,31 @@ export const BaseContainer = styled('div', {
     //#endregion
 
     //#region Center
-    center: {
-      full: {
-        ...baseCenter,
+    gravity: {
+      all: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
       },
       vertical: {
-        ...baseCenter,
-        margin: 'auto 0px',
+        display: 'flex',
+        alignItems: 'center',
       },
       horizontal: {
-        ...baseCenter,
+        display: 'flex',
+        justifyContent: 'center',
+      },
+    },
+    layoutCenter: {
+      true: {
+        width: 920,
         margin: '0px auto',
+        '@tablet': {
+          width: 600,
+        },
+        '@mobile': {
+          width: 380,
+        },
       },
     },
     //#endregion

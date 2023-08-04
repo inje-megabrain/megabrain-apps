@@ -14,8 +14,8 @@ RUN rm -rf /usr/src/app/apps/club/.next/cache
 # Rebuild the source code only when needed
 FROM base AS builder
 WORKDIR /usr/src/app
-COPY --from=deps /usr/src/app .
-COPY .eslintrc.js .prettierrc .
+COPY --from=deps /usr/src/app ./
+COPY .eslintrc.js .prettierrc ./
 RUN yarn build:club
 
 # Production image, copy all the files and run next
@@ -24,9 +24,12 @@ WORKDIR /usr/src/app
 ENV NODE_ENV=production
 RUN yarn global add pm2
 
-COPY --from=builder /usr/src/app/apps/club/public ./public
-COPY --from=builder /usr/src/app/apps/club/.next/standalone ./
-COPY --from=builder /usr/src/app/apps/club/.next/static ./apps/club/.next/static
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+COPY --from=builder --chown=nextjs:nodejs /usr/src/app/apps/club/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /usr/src/app/apps/club/.next/static ./apps/club/.next/static
+COPY --from=builder /usr/src/app/apps/club/public ./apps/club/public
 
 EXPOSE 3000
 

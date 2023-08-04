@@ -1,4 +1,5 @@
 import { styled } from '@megabrain/ui/styles';
+import { Text } from '../Text';
 
 export const BaseButton = styled('button', {
   $$color: '$colors$primary',
@@ -27,6 +28,21 @@ export const BaseButton = styled('button', {
   },
 
   variants: {
+    m: {
+      true: {
+        margin: '3px',
+      },
+    },
+    full: {
+      true: {
+        width: '100%',
+      },
+    },
+    pad: {
+      true: {
+        padding: '8px 22px',
+      },
+    },
     rounded: {
       true: {
         borderRadius: 9999,
@@ -111,7 +127,7 @@ export const BaseButton = styled('button', {
   },
 });
 
-export const BaseButtonText = styled('span', {
+export const BaseButtonText = styled(Text, {
   marginTop: 'auto',
   marginBottom: 'auto',
 });

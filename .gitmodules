@@ -1,4 +1,4 @@
 [submodule "apps/admin"]
 	path = apps/admin
 	url = https://github.com/inje-megabrain/megabrain-apps-admin.git
-  branch = main
+	branch = main

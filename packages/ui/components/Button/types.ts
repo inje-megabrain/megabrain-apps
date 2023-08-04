@@ -1,13 +1,20 @@
 import { ButtonHTMLAttributes, MouseEventHandler, ReactNode } from 'react';
 import { CSS } from '@megabrain/ui/styles';
 
-export type ButtonColor = 'primary' | 'secondary' | 'tertiary' | 'inherit' | 'accent-r' | 'accent-y';
+export type ButtonColor =
+  | 'primary'
+  | 'secondary'
+  | 'tertiary'
+  | 'inherit'
+  | 'accent-r'
+  | 'accent-y';
 
 export type ButtonSize = 'small' | 'medium' | 'large' | 'inherit';
 
 export type ButtonType = 'text' | 'contained' | 'outlined';
 
 export interface ButtonProps {
+  m?: boolean;
   icon?: JSX.Element;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   disabled?: boolean;
@@ -18,4 +25,6 @@ export interface ButtonProps {
   children?: ReactNode;
   type?: ButtonType;
   rounded?: boolean;
+  full?: boolean;
+  pad?: boolean;
 }

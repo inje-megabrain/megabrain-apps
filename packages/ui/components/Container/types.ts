@@ -1,8 +1,8 @@
-import { CSS } from '@megabrain/ui/styles';
-import { MouseEventHandler, ReactNode } from 'react';
-import { BaseHTMLAttributes } from 'react';
-
-type ContainerDisplay = 'block' | 'inline-block' | 'inline';
+import { CSS, VariantProps } from '@megabrain/ui/styles';
+import { MouseEventHandler, ReactNode, BaseHTMLAttributes } from 'react';
+import { BaseFlex } from './Flex.style';
+import { BaseContainer } from './Container.style';
+import { BaseGrid } from './Grid.style';
 
 type ContainerOverflow =
   | 'hidden'
@@ -12,29 +12,34 @@ type ContainerOverflow =
   | 'scroll-x-always'
   | 'always';
 
-type ContainerCenter = 'full' | 'vertical' | 'horizontal';
+type Direction = 'all' | 'horizontal' | 'vertical';
 
-export interface ContainerProps {
-  display?: ContainerDisplay;
+export interface ContainerProps extends VariantProps<typeof BaseContainer> {
   pad?: boolean;
   m?: boolean;
   overflow?: ContainerOverflow;
-  center?: ContainerCenter;
   css?: BaseHTMLAttributes<HTMLDivElement> & CSS;
   onClick?: MouseEventHandler<HTMLDivElement>;
   children?: ReactNode;
-}
-
-type FlexJustify = 'end' | 'start' | 'between' | 'evenly' | 'around' | 'center' | 'left' | 'right';
-
-type FlexAlignItems = 'base' | 'center' | 'start' | 'end';
-
-export interface FlexProps extends ContainerProps {
-  inline?: boolean;
-  nowrap?: boolean;
+  full?: Direction;
+  layoutCenter?: boolean;
+  gravity?: Direction;
   flow?: boolean;
-  justify?: FlexJustify;
-  items?: FlexAlignItems;
+  radius?: boolean;
 }
 
-export interface GridProps extends ContainerProps {}
+// type FlexJustify = 'end' | 'start' | 'between' | 'evenly' | 'around' | 'center' | 'left' | 'right';
+
+// type FlexAlignItems = 'base' | 'center' | 'start' | 'end';
+// type FlexDirection = 'row' | 'col' | 'row-reverse' | 'col-reverse';
+
+export interface FlexProps extends ContainerProps, VariantProps<typeof BaseFlex> {
+  // inline?: boolean;
+  // nowrap?: boolean;
+  // justify?: FlexJustify;
+  // items?: FlexAlignItems;
+  // direction?: VariantProps<typeof BaseFlex>['direction'];
+  shadow?: boolean;
+}
+
+export interface GridProps extends ContainerProps, VariantProps<typeof BaseGrid> {}
