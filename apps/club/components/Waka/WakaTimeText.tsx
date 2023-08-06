@@ -13,7 +13,6 @@ export const WakaTimeText: React.FC<WakaTimeTextProps> = ({ time, bold = true })
       tag="p"
       type="primary"
       weight={bold ? 'bold' : 'normal'}
-      // align="center"
       css={{
         margin: 'auto 0',
       }}

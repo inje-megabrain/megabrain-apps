@@ -25,14 +25,6 @@ if (__MOCK_MODE_LOCAL === null && !IS_PRODUCTION)
 
 //#region
 
-// type APIResponse<TData = unknown> = TData; // or { data: TData }
-
-// const unwrapResponse = async (response: Response) => {
-//   const json = (await response.json()) as APIResponse;
-//   // eslint-disable-next-line
-//   return json as any;
-// };
-
 //#endregion
 
 //#region Fetcher
